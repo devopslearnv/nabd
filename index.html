@@ -602,6 +602,54 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
   *,*::before,*::after{animation:none!important;transition:none!important}
   .ecg path,.ecg2 path{stroke-dashoffset:0}
 }
+
+/* ---------- chapter navigation ---------- */
+.ticks{position:fixed;top:0;left:0;width:100%;height:3px;z-index:21;pointer-events:none}
+.ticks i{position:absolute;top:0;width:2px;height:7px;margin-left:-1px;background:rgba(238,242,247,.55);border-radius:0 0 2px 2px}
+.toc{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:max(14px,env(safe-area-inset-right,0px));z-index:40;font-family:var(--mono)}
+.tocbtn{display:flex;align-items:center;gap:10px;max-width:min(62vw,380px);padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(10,16,28,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);font:inherit;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,background .2s}
+.tocbtn:hover,.tocbtn[aria-expanded=true]{border-color:var(--green);background:rgba(14,22,38,.95)}
+.tocdot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--c,var(--muted));box-shadow:0 0 10px var(--c,transparent)}
+#toccur{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.tocic{flex:none;display:grid;gap:3px}.tocic i{display:block;width:14px;height:2px;border-radius:1px;background:currentColor}
+.tocp{position:absolute;right:0;top:calc(100% + 8px);width:min(370px,calc(100vw - 28px));max-height:calc(100vh - 90px);max-height:calc(100svh - 90px);overflow:auto;overscroll-behavior:contain;padding:10px;border-radius:20px;border:1px solid var(--line);background:rgba(8,12,22,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(0,0,0,.55);transform-origin:top right;animation:tocin .18s ease-out}
+.tocp[hidden]{display:none}
+@keyframes tocin{from{opacity:0;transform:translateY(-6px) scale(.98)}to{opacity:1;transform:none}}
+.tocg{padding:4px 0 6px}.tocg+.tocg{border-top:1px solid rgba(34,52,77,.6)}
+.tocgh{display:flex;align-items:center;gap:8px;width:100%;padding:10px 10px 6px;border:0;background:none;color:var(--c);font:inherit;font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:left;cursor:pointer}
+.tocgh b{font-weight:600;opacity:.6}
+.tocit{display:flex;gap:12px;align-items:baseline;width:100%;padding:8px 10px;border:0;border-radius:10px;background:none;color:var(--muted);font-family:var(--body);font-size:15px;text-align:left;cursor:pointer;transition:background .15s,color .15s}
+.tocit span{flex:none;width:22px;font-family:var(--mono);font-size:11px;color:var(--c);opacity:.8}
+.tocit:hover{background:rgba(238,242,247,.06);color:var(--ink)}
+.tocit.on{background:rgba(238,242,247,.09);color:var(--ink);box-shadow:inset 2px 0 0 var(--c)}
+.tockeys{margin:6px 10px 4px;padding-top:10px;border-top:1px solid rgba(34,52,77,.6);font-size:11px;letter-spacing:.06em;color:var(--muted);line-height:1.7}
+.tockeys kbd{font:inherit;padding:1px 6px;border:1px solid var(--line);border-radius:5px;color:var(--ink)}
+@media (pointer:coarse){.tockeys{display:none}}
+.veil{position:fixed;inset:0;z-index:35;background:var(--bg);opacity:0;pointer-events:none;transition:opacity .18s ease}
+.veil.on{opacity:1}
+@media (max-width:600px){.tocbtn{padding:8px 12px;font-size:11px;max-width:58vw}}
+@media print{.toc,.ticks,.veil{display:none}}
+
+/* ---------- slides mode ---------- */
+html.slock{overflow:hidden;overscroll-behavior:none}
+.modesw{display:flex;padding:3px;border-radius:999px;border:1px solid var(--line);background:rgba(10,16,28,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.modesw button{padding:6px 11px;border:0;border-radius:999px;background:none;color:var(--muted);font:inherit;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.modesw button[aria-pressed=true]{background:rgba(238,242,247,.12);color:var(--ink)}
+.modesw button:hover{color:var(--ink)}
+.toc{display:flex;gap:8px;align-items:flex-start}
+.toc .tocwrap{position:relative}
+.sctl{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:40;display:none;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
+html.slides .sctl{display:flex}
+.sctl button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(10,16,28,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);font-size:18px;line-height:1;cursor:pointer;transition:border-color .2s}
+.sctl button:hover{border-color:var(--green)}
+.sctl span{padding:0 6px;min-width:54px;text-align:center}
+.sdots{display:flex;gap:4px;padding-right:4px}
+.sdots i{width:5px;height:5px;border-radius:50%;background:rgba(238,242,247,.25);transition:background .2s,transform .2s}
+.sdots i.on{background:var(--ink);transform:scale(1.25)}
+html.slides .hero .mouse{display:none}
+@media (pointer:coarse){.sctl button{display:none}.sctl{bottom:calc(env(safe-area-inset-bottom,0px) + 10px)}}
+@media (max-width:600px){.modesw button{padding:5px 8px;font-size:10px}}
+@media print{.sctl,.modesw{display:none}}
 </style>
 </head>
 <body>
@@ -609,6 +657,16 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <canvas id="streaks" aria-hidden="true"></canvas>
 <div class="cglow" id="cur" aria-hidden="true"></div>
 <div class="prog" id="prog"></div>
+<div class="ticks" id="ticks" aria-hidden="true"></div>
+<div class="veil" id="veil" aria-hidden="true"></div>
+<nav class="toc" id="toc" aria-label="Chapters">
+  <div class="modesw" id="modesw" role="group" aria-label="View mode"><button type="button" data-m="slides" aria-pressed="false" title="Step through like slides">Slides</button><button type="button" data-m="scroll" aria-pressed="false" title="Scroll freely">Scroll</button></div>
+  <div class="tocwrap">
+  <button class="tocbtn" id="tocbtn" type="button" aria-expanded="false" aria-controls="tocp" title="Jump to a part (M)"><span class="tocdot" id="tocdot"></span><span id="toccur">Chapters</span><span class="tocic" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  <div class="tocp" id="tocp" hidden></div>
+  </div>
+</nav>
+<div class="sctl" id="sctl"><span class="sdots" id="sdots" aria-hidden="true"></span><button type="button" id="sprev" aria-label="Previous step">&lsaquo;</button><span id="scount">1 / 1</span><button type="button" id="snext" aria-label="Next step">&rsaquo;</button></div>
 <main>
 
 <!-- HERO -->
@@ -2001,6 +2059,363 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
     w.addEventListener('pointermove', function(e){ var r = w.getBoundingClientRect(); var x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5; w.style.transform = 'rotateY(' + x*10 + 'deg) rotateX(' + (-y*10) + 'deg)'; });
     w.addEventListener('pointerleave', function(){ w.style.transform = ''; });
   });
+
+  /* ---------- chapter navigation + slides mode ---------- */
+  (function(){
+    var q = function(sel){ return document.querySelector(sel); };
+    var root = document.documentElement;
+    var L = (typeof lenis !== 'undefined' && lenis && lenis.scrollTo) ? lenis : null;
+    var fine = window.matchMedia && window.matchMedia('(pointer:fine)').matches;
+
+    /* chapters: [id, selector, label, number] */
+    var CH = [
+      {t:'Start', c:'var(--ink)', it:[['start','.hero','NABD'],['two-problems','[data-k=two]','One gym, two problems']]},
+      {t:'Retain · the problem', c:'var(--red)', it:[['retain','.pk','Retain'],['sara','[data-k=sara]','Meet Sara','01'],['stalls','[data-k=clock]','Why she stalls','02'],['apps','[data-k=apps]',"Her apps don't talk",'03'],['protein','[data-k=miss]','The missing protein','04'],['her-week','[data-k=truth]','Her week, in numbers','05']]},
+      {t:'Win · the problem', c:'var(--sky)', it:[['win','.pw','Win'],['omar','[data-k=omar]','Meet Omar','06']]},
+      {t:'Meet NABD', c:'var(--green)', it:[['meet-nabd','[data-k=words]','Meet NABD'],['layers','[data-k=build]','Built layer by layer','07'],['dots','[data-k=dots]','Connecting the dots','08']]},
+      {t:'Retain · with NABD', c:'var(--red)', it:[['week-rebuilt','[data-k=plan]',"Sara's week, rebuilt",'09'],['sara-day','[data-k=day]',"Sara's day with NABD",'10'],['loop','[data-k=loop]','The closed loop','11']]},
+      {t:'Win · with NABD', c:'var(--sky)', it:[['omar-way-in','[data-k=omarwin]',"Omar's way in",'12'],['funnel','[data-k=funnel]','Win them, retain them','13']]},
+      {t:'The outcome', c:'var(--green)', it:[['closed','[data-k=closed]','Every problem, closed','14'],['endings','[data-k=result]','Better endings','15'],['features','.feat','Best features, inside the gym app'],['everyone','.wins','Good for members, trainers and the gym']]},
+      {t:"What's next", c:'var(--sand)', it:[['phase-2','[data-k=p2]','Phase 2'],['contact','#contact',"Let's talk"]]}
+    ];
+    /* slide steps: scene progress values where each click lands (taken from each scene's own timings).
+       Parts without steps (features onwards, incl. Phase 2) stay a normal scrolling page in both modes. */
+    var STOPS = {
+      'start':[0], 'two-problems':[.42,.78,1], 'retain':[1], 'sara':[.4,.82,1], 'stalls':[0,.89,1],
+      'apps':[.29,.61,1], 'protein':[.19,.49,.61,.81,1], 'her-week':[.3,.52,.76,1], 'win':[1],
+      'omar':[.12,.39,.59,.79,1], 'meet-nabd':[1], 'layers':[.1,.27,.38,.49,.6,.73,1], 'dots':[.39,.69,1],
+      'week-rebuilt':[.47,1], 'sara-day':[.19,.39,.59,.79,1], 'loop':[.21,.37,.53,.7,1],
+      'omar-way-in':[.19,.39,.59,.79,1], 'funnel':[.33,.49,.83,1], 'closed':[0,1], 'endings':[.31,.79,1]
+    };
+
+    var btn = $('tocbtn'), panel = $('tocp'), cur = $('toccur'), dot = $('tocdot'), veil = $('veil'), ticks = $('ticks');
+    var T = [], byId = {};
+    CH.forEach(function(ch, ci){
+      var g = document.createElement('div'); g.className = 'tocg'; g.style.setProperty('--c', ch.c);
+      var first = null;
+      ch.it.forEach(function(it){
+        var el = q(it[1]); if (!el) return;
+        if (!el.id) el.id = it[0];
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'tocit';
+        b.innerHTML = '<span>' + (it[3] || '') + '</span>' + it[2];
+        var t = {id: el.id, key: it[0], el: el, label: (it[3] ? it[3] + ' · ' : '') + it[2], ch: ci, c: ch.c, b: b, stops: STOPS[it[0]] || null};
+        b.addEventListener('click', function(){ go(t); });
+        T.push(t); byId[t.id] = t; if (!first) first = t;
+        g.appendChild(b);
+      });
+      if (!first) return;
+      ch.first = first;
+      var h = document.createElement('button'); h.type = 'button'; h.className = 'tocgh';
+      h.innerHTML = '<b>' + (ci + 1) + '</b>' + ch.t;
+      h.addEventListener('click', function(){ go(first); });
+      g.insertBefore(h, g.firstChild);
+      panel.appendChild(g);
+    });
+    var keys = document.createElement('div'); keys.className = 'tockeys';
+    panel.appendChild(keys);
+    T.sort(function(a, b){ return a.el.compareDocumentPosition(b.el) & 2 ? 1 : -1; });
+    var SL = T.filter(function(t){ return t.stops; });
+    var FREE = T.filter(function(t){ return !t.stops; });
+    var freeEl = FREE.length ? FREE[0].el : null;
+    SL.forEach(function(t, i){ t.si = i; });
+
+    function top(el){ return el.getBoundingClientRect().top + window.scrollY; }
+    function isPin(el){ return el.classList.contains('pin'); }
+    function total(el){ return isPin(el) ? Math.max(0, el.offsetHeight - window.innerHeight) : 0; }
+    function yAt(t, p){ return top(t.el) + p * total(t.el); }
+    function stickOf(t){ return isPin(t.el) ? (t.el.querySelector('.stick') || t.el) : t.el; }
+    function setY(y){
+      y = Math.max(0, Math.round(y));
+      if (L) L.scrollTo(y, {immediate: true, force: true}); else window.scrollTo(0, y);
+      frame();
+    }
+    function ease(x){ return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+    /* ---------- menu ---------- */
+    function open(v){
+      panel.hidden = !v; btn.setAttribute('aria-expanded', v ? 'true' : 'false');
+      if (v){ var a = panel.querySelector('.tocit.on') || panel.querySelector('.tocit'); if (a){ a.scrollIntoView({block: 'nearest'}); a.focus({preventScroll: true}); } }
+    }
+    btn.addEventListener('click', function(e){ e.stopPropagation(); open(panel.hidden); });
+    document.addEventListener('click', function(e){ if (!panel.hidden && !e.target.closest('#toc')){ open(false); e.__menu = true; } });
+
+    /* ---------- current-part tracking ---------- */
+    var idx = -1;
+    function current(){
+      var line = window.scrollY + window.innerHeight * .45, i = 0;
+      for (var j = 0; j < T.length; j++){ if (top(T[j].el) <= line) i = j; else break; }
+      return i;
+    }
+    function sync(){
+      var i = current(); if (i === idx) return; idx = i;
+      var t = T[i];
+      cur.textContent = i === 0 ? 'Chapters' : t.label;
+      dot.style.setProperty('--c', t.c);
+      T.forEach(function(x, j){ x.b.classList.toggle('on', j === i); });
+    }
+    function placeTicks(){
+      var max = document.documentElement.scrollHeight - window.innerHeight; ticks.innerHTML = '';
+      if (max <= 0) return;
+      CH.forEach(function(ch, ci){ if (!ch.first || ci === 0) return; var i = document.createElement('i'); i.style.left = Math.min(100, top(ch.first.el) / max * 100) + '%'; ticks.appendChild(i); });
+    }
+
+    /* ---------- scroll-mode jump (fade) ---------- */
+    function fadeJump(y, instant){
+      function jump(){ setY(y); sync(); }
+      if (instant || reduce){ jump(); return; }
+      veil.classList.add('on');
+      setTimeout(function(){ jump(); setTimeout(function(){ veil.classList.remove('on'); }, 80); }, 190);
+    }
+
+    /* ---------- slides engine ---------- */
+    var mode = 'scroll', free = false, si = 0, k = 0, tw = null, busy = false;
+    var sctl = $('sctl'), scount = $('scount'), sdots = $('sdots');
+
+    function paintCtl(){
+      if (mode !== 'slides') return;
+      if (free){ scount.textContent = 'Scroll ↓'; sdots.innerHTML = ''; return; }
+      scount.textContent = (si + 1) + ' / ' + SL.length;
+      var S = SL[si].stops, h = '';
+      if (S.length > 1) for (var i = 0; i < S.length; i++) h += '<i' + (i <= k ? ' class="on"' : '') + '></i>';
+      sdots.innerHTML = h;
+    }
+    function stopTween(){ if (tw){ cancelAnimationFrame(tw.raf); tw = null; } }
+    function tweenTo(p, done){
+      stopTween();
+      var t = SL[si], y0 = window.scrollY, y1 = yAt(t, p);
+      var dp = Math.abs(y1 - y0) / Math.max(1, total(t.el));
+      var dur = Math.min(3600, 650 + dp * 2600);
+      if (Math.abs(y1 - y0) < 2){ setY(y1); if (done) done(); return; }
+      var t0 = performance.now();
+      var me = tw = {y1: y1, done: done, raf: 0};
+      (function step(now){
+        if (tw !== me) return;
+        var x = Math.min(1, (now - t0) / dur);
+        setY(y0 + (y1 - y0) * ease(x));
+        if (x < 1) tw.raf = requestAnimationFrame(step);
+        else { var d = tw.done; tw = null; if (d) d(); }
+      })(t0);
+    }
+    function finishTween(){ if (!tw) return; var y = tw.y1, d = tw.done; stopTween(); setY(y); if (d) d(); }
+
+    function slideAnim(el, from, to, dur, easing){
+      if (!el.animate) return null;
+      return el.animate([{transform: 'translateX(' + from + 'vw)', opacity: from ? 0 : 1}, {transform: 'translateX(' + to + 'vw)', opacity: to ? 0 : 1}], {duration: dur, easing: easing, fill: 'forwards'});
+    }
+    /* run cb when the exit animation ends, with a timer fallback so input can never get stuck */
+    function once(anim, cb, ms){
+      var ran = false, f = function(){ if (ran) return; ran = true; cb(); };
+      if (anim) anim.onfinish = f; else { f(); return; }
+      setTimeout(f, ms);
+    }
+    /* move to slide n. how: 'fwd' (land at start, play first step), 'back' (land on last step), 'jump' */
+    function goSlide(n, how){
+      if (n < 0 || busy) return;
+      if (n >= SL.length){ enterFree(freeEl ? top(freeEl) : null); return; }
+      stopTween();
+      var fwd = how === 'back' ? false : how === 'jump' ? (free || n >= si) : true;
+      var outEl = free && freeEl ? freeEl : stickOf(SL[si]);
+      busy = true;
+      var oa = slideAnim(outEl, 0, fwd ? -14 : 14, 320, 'cubic-bezier(.55,0,.75,.2)');
+      var after = function(){
+        lock(true);
+        si = n; var S = SL[n].stops;
+        k = how === 'back' ? S.length - 1 : 0;
+        setY(yAt(SL[n], how === 'back' ? S[k] : 0));
+        if (oa) oa.cancel();
+        var inEl = stickOf(SL[n]);
+        var ia = slideAnim(inEl, fwd ? 14 : -14, 0, 520, 'cubic-bezier(.2,.8,.2,1)'); if (ia) ia.onfinish = function(){ ia.cancel(); };
+        setTimeout(function(){
+          busy = false;
+          if (how !== 'back' && S[0] > 0) tweenTo(S[0]);
+        }, 220);
+        paintCtl(); sync();
+      };
+      once(oa, after, 380);
+    }
+    function next(){
+      if (busy) return;
+      if (free){ freeStep(1); return; }
+      if (tw){ finishTween(); return; }
+      var S = SL[si].stops;
+      if (k < S.length - 1){ k++; tweenTo(S[k]); paintCtl(); }
+      else goSlide(si + 1, 'fwd');
+    }
+    function prev(){
+      if (busy) return;
+      if (free){ freeStep(-1); return; }
+      var S = SL[si].stops;
+      stopTween();
+      if (k > 0){ k--; tweenTo(S[k]); paintCtl(); }
+      else goSlide(si - 1, 'back');
+    }
+
+    /* ending: features, wins, contact scroll normally */
+    function lock(on){
+      free = !on;
+      root.classList.toggle('slock', mode === 'slides' && on);
+      if (L){ if (mode === 'slides' && on) L.stop(); else L.start(); }
+    }
+    function enterFree(y){
+      if (busy || !freeEl) return;
+      stopTween();
+      var outEl = free ? null : stickOf(SL[si]);
+      busy = true;
+      var oa = outEl ? slideAnim(outEl, 0, -14, 320, 'cubic-bezier(.55,0,.75,.2)') : null;
+      var after = function(){
+        lock(false);
+        setY(y == null ? top(freeEl) : y);
+        if (oa) oa.cancel();
+        var ia = slideAnim(freeEl, 14, 0, 520, 'cubic-bezier(.2,.8,.2,1)'); if (ia) ia.onfinish = function(){ ia.cancel(); };
+        setTimeout(function(){ busy = false; }, 220);
+        paintCtl(); sync();
+      };
+      once(oa, after, 380);
+    }
+    function freeStep(d){
+      var y = window.scrollY, tops = [];
+      FREE.forEach(function(t){ tops.push(top(t.el)); if (isPin(t.el)) tops.push(yAt(t, 1)); });
+      if (d < 0 && y <= tops[0] + 8){ goSlide(SL.length - 1, 'back'); return; }
+      var tgt = null;
+      if (d > 0){ for (var i = 0; i < tops.length; i++) if (tops[i] > y + 8){ tgt = tops[i]; break; } if (tgt == null) tgt = document.documentElement.scrollHeight; }
+      else { for (var j = tops.length - 1; j >= 0; j--) if (tops[j] < y - 8){ tgt = tops[j]; break; } if (tgt == null) tgt = tops[0]; }
+      var dur = Math.min(2.6, .9 + Math.abs(tgt - y) / window.innerHeight * .22);
+      if (L){ L.start(); L.scrollTo(tgt, {duration: dur}); } else window.scrollTo({top: tgt, behavior: 'smooth'});
+    }
+
+    /* ---------- mode switching ---------- */
+    var hint = q('.hero .hint'), hintTxt = hint ? hint.textContent : '';
+    var msw = $('modesw');
+    function setMode(m, keepPos){
+      if (reduce) m = 'scroll';
+      stopTween(); busy = false;
+      mode = m;
+      root.classList.toggle('slides', m === 'slides');
+      [].forEach.call(msw.querySelectorAll('button'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-m') === m ? 'true' : 'false'); });
+      try { localStorage.setItem('nabd-mode', m); } catch(e){}
+      if (hint) hint.textContent = m === 'slides' ? (fine ? 'Click or press → to begin' : 'Tap or swipe to begin') : hintTxt;
+      keys.innerHTML = m === 'slides'
+        ? '<kbd>&rarr;</kbd> / click next step &nbsp; <kbd>&larr;</kbd> back<br><kbd>Shift</kbd>+<kbd>&rarr;</kbd> skip to next part &nbsp; <kbd>1</kbd>&ndash;<kbd>8</kbd> chapters &nbsp; <kbd>M</kbd> menu'
+        : '<kbd>&larr;</kbd> <kbd>&rarr;</kbd> previous / next part &nbsp; <kbd>1</kbd>&ndash;<kbd>8</kbd> chapters<br><kbd>M</kbd> this menu &nbsp; <kbd>Esc</kbd> close';
+      if (m === 'scroll'){ lock(false); return; }
+      /* entering slides: continue from wherever the reader is */
+      if (freeEl && window.scrollY >= top(freeEl) - window.innerHeight * .5){ lock(false); paintCtl(); return; }
+      var y = window.scrollY + 2, n = 0;
+      for (var i = 0; i < SL.length; i++){ if (top(SL[i].el) <= y) n = i; }
+      si = n; var t = SL[n], S = t.stops, tt = total(t.el), p = tt ? Math.min(1, Math.max(0, (window.scrollY - top(t.el)) / tt)) : 0;
+      k = 0; for (var j = 0; j < S.length; j++) if (S[j] <= p + .02) k = j;
+      lock(true);
+      if (keepPos !== false) tweenTo(S[k]);
+      paintCtl();
+    }
+    msw.addEventListener('click', function(e){ var b = e.target.closest('button'); if (b) setMode(b.getAttribute('data-m')); });
+    if (reduce) msw.style.display = 'none';
+
+    /* ---------- chapter jump (both modes) ---------- */
+    function go(t, instant){
+      open(false);
+      try { history.replaceState(null, '', location.pathname + location.search + '#' + t.id); } catch(e){}
+      if (mode === 'slides'){
+        if (t.stops) goSlide(t.si, 'jump');
+        else if (free){ if (L) L.scrollTo(top(t.el), {duration: 1.1}); else window.scrollTo({top: top(t.el), behavior: 'smooth'}); }
+        else enterFree(top(t.el));
+        return;
+      }
+      fadeJump(top(t.el) + (isPin(t.el) ? 2 : 0), instant);
+    }
+
+    /* ---------- input ---------- */
+    function interactive(el){ return el && el.closest && el.closest('a,button,input,textarea,select,label,#toc,.sctl,[contenteditable]'); }
+    document.addEventListener('keydown', function(e){
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      var tg = e.target; if (tg && (tg.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(tg.tagName))) return;
+      var key = e.key;
+      if (key === 'Escape' && !panel.hidden){ open(false); btn.focus(); return; }
+      if (key === 'm' || key === 'M'){ e.preventDefault(); open(panel.hidden); return; }
+      if (/^[1-8]$/.test(key)){ var ch = CH[+key - 1]; if (ch && ch.first){ e.preventDefault(); go(ch.first); } return; }
+      if (!panel.hidden) return;
+      if (mode === 'slides'){
+        var nextK = key === 'ArrowRight' || key === 'PageDown' || key === 'Enter' || (key === ' ' && !e.shiftKey) || (key === 'ArrowDown' && !free);
+        var prevK = key === 'ArrowLeft' || key === 'PageUp' || (key === ' ' && e.shiftKey) || (key === 'ArrowUp' && !free);
+        if (key === 'Enter' && interactive(tg)) return;
+        if (key === ' ' && interactive(tg)) return;
+        if (free && (key === ' ' || key === 'PageDown' || key === 'PageUp')) return;
+        if (e.shiftKey && key === 'ArrowRight' && !free){ e.preventDefault(); stopTween(); goSlide(si + 1, 'fwd'); return; }
+        if (e.shiftKey && key === 'ArrowLeft' && !free){ e.preventDefault(); stopTween(); goSlide(Math.max(0, si - 1), 'jump'); return; }
+        if (key === 'Home'){ e.preventDefault(); go(SL[0]); return; }
+        if (nextK){ e.preventDefault(); next(); return; }
+        if (prevK){ e.preventDefault(); prev(); return; }
+        return;
+      }
+      if (key === 'ArrowRight' || key === 'ArrowLeft'){
+        e.preventDefault();
+        var i = current(), n = key === 'ArrowRight' ? Math.min(T.length - 1, i + 1) : (window.scrollY > top(T[i].el) + window.innerHeight * .6 ? i : Math.max(0, i - 1));
+        go(T[n]);
+      }
+    });
+
+    /* wheel / trackpad: one step per gesture */
+    var lastWheel = 0, lastStep = 0;
+    window.addEventListener('wheel', function(e){
+      if (mode !== 'slides' || free) return;
+      e.preventDefault();
+      var now = performance.now(), gap = now - lastWheel; lastWheel = now;
+      var d = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+      if (Math.abs(d) < 8) return;
+      if (gap < 220 && now - lastStep < 1100) return;
+      lastStep = now;
+      if (d > 0) next(); else prev();
+    }, {passive: false});
+
+    /* touch: swipe any direction, tap right/left */
+    var tx = 0, ty = 0, tt0 = 0, swiped = false;
+    window.addEventListener('touchstart', function(e){ if (e.touches.length !== 1) return; tx = e.touches[0].clientX; ty = e.touches[0].clientY; tt0 = performance.now(); swiped = false; }, {passive: true});
+    window.addEventListener('touchmove', function(e){ if (mode === 'slides' && !free && e.touches.length === 1 && !interactive(e.target) && panel.hidden) e.preventDefault(); }, {passive: false});
+    window.addEventListener('touchend', function(e){
+      if (mode !== 'slides' || free || !panel.hidden) return;
+      var t = e.changedTouches[0], dx = t.clientX - tx, dy = t.clientY - ty;
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < 40) return;
+      swiped = true;
+      if (Math.abs(dx) > Math.abs(dy)) { if (dx < 0) next(); else prev(); }
+      else { if (dy < 0) next(); else prev(); }
+    }, {passive: true});
+    /* click / tap: left third goes back, the rest goes forward */
+    document.addEventListener('click', function(e){
+      if (mode !== 'slides' || free || swiped){ swiped = false; return; }
+      if (e.__menu || interactive(e.target) || !panel.hidden) return;
+      var sel = window.getSelection && String(window.getSelection()); if (sel) return;
+      if (e.clientX < window.innerWidth * .3) prev(); else next();
+    });
+    $('snext').addEventListener('click', function(e){ e.stopPropagation(); next(); });
+    $('sprev').addEventListener('click', function(e){ e.stopPropagation(); prev(); });
+
+    /* scrolling back up out of the ending re-enters the last slide */
+    var sy = false;
+    window.addEventListener('scroll', function(){
+      if (!sy){ sy = true; requestAnimationFrame(function(){
+        sy = false; sync();
+        if (mode === 'slides' && free && !busy && freeEl){
+          var last = SL[SL.length - 1], endY = yAt(last, 1);
+          if (window.scrollY <= endY + 2){ si = SL.length - 1; k = last.stops.length - 1; lock(true); setY(endY); paintCtl(); }
+        }
+      }); }
+    }, {passive: true});
+    var rz = 0;
+    window.addEventListener('resize', function(){
+      placeTicks(); idx = -1; sync();
+      clearTimeout(rz); rz = setTimeout(function(){ if (mode === 'slides' && !free && !tw && !busy) setY(yAt(SL[si], SL[si].stops[k] || 0)); }, 150);
+    });
+    window.addEventListener('load', placeTicks);
+
+    /* ---------- start ---------- */
+    var qm = (location.search.match(/[?&]mode=(slides|scroll)/) || [])[1], saved = null;
+    try { saved = localStorage.getItem('nabd-mode'); } catch(e){}
+    placeTicks();
+    var h = decodeURIComponent((location.hash || '').slice(1));
+    setMode(qm || saved || 'slides', false);
+    sync();
+    if (h && byId[h]) setTimeout(function(){ go(byId[h], true); }, 150);
+  })();
 })();
 </script>
 </body>
