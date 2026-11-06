@@ -406,14 +406,14 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 .pbig{font-family:var(--display);font-weight:800;font-size:clamp(96px,21vw,320px);line-height:.82;letter-spacing:-.05em}
 .pbig span{display:inline-block;opacity:0;will-change:transform,opacity}
 .psm{font-family:var(--display);font-weight:800;font-size:clamp(30px,5.4vw,78px);line-height:1;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.5px rgba(238,242,247,.55);background:linear-gradient(90deg,var(--ink) var(--f,0%),transparent var(--f,0%));-webkit-background-clip:text;background-clip:text;max-width:16ch}
-.pk .pbig{color:var(--red);text-shadow:0 0 80px rgba(255,107,87,.45)}
+.pk .pbig{font-size:clamp(72px,15vw,240px);color:var(--red);text-shadow:0 0 80px rgba(255,107,87,.45)}
 .pw .pbig{color:var(--sky);text-shadow:0 0 80px rgba(141,180,255,.45)}
 .pn .pbig{color:var(--green);text-shadow:0 0 80px rgba(79,224,190,.45)}
 
 /* two problems */
 .twog{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:min(1100px,100%);gap:clamp(10px,3vw,40px)}
 .side{border-radius:28px;padding:clamp(16px,3vw,36px);background:rgba(10,16,28,.78);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.4vh,14px);text-align:center;will-change:transform,opacity}
-.side .bw{font-family:var(--display);font-weight:800;font-size:clamp(52px,10vw,150px);line-height:.85;letter-spacing:-.04em}
+.side .bw{font-family:var(--display);font-weight:800;font-size:clamp(36px,7vw,110px);line-height:.85;letter-spacing:-.04em}
 .side.k{border-color:rgba(255,107,87,.4)} .side.w{border-color:rgba(141,180,255,.4)}
 .side.k .bw{color:var(--red);text-shadow:0 0 50px rgba(255,107,87,.4)} .side.w .bw{color:var(--sky);text-shadow:0 0 50px rgba(141,180,255,.4)}
 .side .nm{font-family:var(--display);font-weight:700;font-size:clamp(18px,2.2vw,26px)}
@@ -618,7 +618,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
       <span class="eyebrow">For gyms and gym apps</span>
       <h1 aria-label="NABD, نبض"><span class="ltr" style="animation-delay:.05s">N</span><span class="ltr" style="animation-delay:.12s">A</span><span class="ltr" style="animation-delay:.19s">B</span><span class="ltr" style="animation-delay:.26s">D</span><span class="ar" lang="ar">نبض</span></h1>
       <p class="hsub">The layer every gym app is missing: <b>the pulse between workouts.</b></p>
-      <div class="pills"><span class="pill k">Keep the members you have</span><span class="pill w">Win the ones you don't</span></div>
+      <div class="pills"><span class="pill k">Retain the members you have</span><span class="pill w">Win the ones you don't</span></div>
       <span class="wip">Work in progress · demo build</span>
     </div>
     <div class="hr" aria-hidden="true">
@@ -645,7 +645,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
   <div class="stick">
     <span class="eyebrow tag">One gym · Two problems</span>
     <div class="twog">
-      <div class="side k" id="sideK"><div class="avatar" aria-hidden="true"><span class="mono s">S</span></div><span class="bw">KEEP</span><span class="nm">Sara, a member</span><span class="who">Trains at her gym. Stalls, slips, and quietly leaves.</span></div>
+      <div class="side k" id="sideK"><div class="avatar" aria-hidden="true"><span class="mono s">S</span></div><span class="bw">RETAIN</span><span class="nm">Sara, a member</span><span class="who">Trains at her gym. Stalls, slips, and quietly leaves.</span></div>
       <div class="side w" id="sideW"><div class="avatar" aria-hidden="true"><span class="mono o">O</span></div><span class="bw">WIN</span><span class="nm">Omar, not a member yet</span><span class="who">Wants to get fit. Every gym looks the same to him.</span></div>
     </div>
     <p class="cap" id="capTwo" style="min-height:1.2em">One gym. Two problems.</p>
@@ -655,7 +655,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <section class="pin pcard2 pk" data-k="part" style="--h:230vh">
   <div class="stick">
     <span class="eyebrow">Part 1 · What gym apps miss: retention</span>
-    <h2 class="pbig" aria-label="KEEP"><span>K</span><span>E</span><span>E</span><span>P</span></h2>
+    <h2 class="pbig" aria-label="RETAIN"><span>R</span><span>E</span><span>T</span><span>A</span><span>I</span><span>N</span></h2>
     <p class="psm">the members you already have.</p>
   </div>
 </section>
@@ -663,7 +663,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <!-- A: SARA -->
 <section class="pin" data-k="sara" style="--h:420vh">
   <div class="stick">
-    <span class="eyebrow tag">Keep · 01 · Meet Sara</span>
+    <span class="eyebrow tag">Retain · 01 · Meet Sara</span>
     <div style="position:relative;display:flex;align-items:center;justify-content:center;min-height:clamp(220px,30vh,260px);width:100%">
       <div class="avatar" id="av" aria-hidden="true">
         <div class="halo" id="halo"></div>
@@ -683,7 +683,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <!-- B: 24 HOURS -->
 <section class="pin" data-k="clock" style="--h:380vh">
   <div class="stick">
-    <span class="eyebrow tag">Keep · 02 · Why she stalls</span>
+    <span class="eyebrow tag">Retain · 02 · Why she stalls</span>
     <div class="clockbox">
       <svg id="ring" viewBox="0 0 440 440" aria-hidden="true"></svg>
       <div class="cc"><span class="t" id="ct">00:00</span><span class="a" id="ca">Sleeping</span><span class="s" id="cs">GYM APP CAN'T SEE</span></div>
@@ -696,7 +696,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <!-- C: APPS -->
 <section class="pin" data-k="apps" style="--h:320vh">
   <div class="stick">
-    <span class="eyebrow tag">Keep · 03 · Her apps don't talk</span>
+    <span class="eyebrow tag">Retain · 03 · Her apps don't talk</span>
     <div class="apps" id="apps">
       <div class="app w" id="appW"><span class="nm">Watch app</span><span class="sm">Last night</span><span class="big">5h 10m</span><span class="sm">sleep · low recovery</span><div class="row"></div><div class="row" style="width:70%"></div></div>
       <div class="app gn" id="appG"><span class="nm">Gym app</span><span class="sm">Tonight</span><span class="big">GRIT</span><span class="sm">high intensity · booked</span><div class="row"></div><div class="row" style="width:60%"></div></div>
@@ -713,7 +713,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <!-- PROTEIN MISSED -->
 <section class="pin" data-k="miss" style="--h:470vh">
   <div class="stick">
-    <span class="eyebrow tag">Keep · 04 · The missing protein</span>
+    <span class="eyebrow tag">Retain · 04 · The missing protein</span>
     <div class="miss">
       <div class="mchart" id="mchart">
         <div class="need" id="need"><span>Her need: 91 g+</span></div>
@@ -736,7 +736,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <!-- TRUTH -->
 <section class="pin" data-k="truth" style="--h:340vh">
   <div class="stick">
-    <span class="eyebrow tag">Keep · 05 · Her week, in numbers</span>
+    <span class="eyebrow tag">Retain · 05 · Her week, in numbers</span>
     <p class="cap" id="capT" style="min-height:1.2em">The warning signs were there.</p>
     <div class="meters">
       <div class="mt"><div class="top"><b>Sleep, nightly average</b><span class="val" id="tv0">0h</span></div>
@@ -856,7 +856,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <!-- PLAN -->
 <section class="pin" data-k="plan" style="--h:520vh">
   <div class="stick">
-    <span class="eyebrow tag">Keep · 09 · Sara's week, rebuilt</span>
+    <span class="eyebrow tag">Retain · 09 · Sara's week, rebuilt</span>
     <div class="planw">
       <div id="panA">
         <h3 class="ph">This week's workout plan</h3>
@@ -883,7 +883,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <!-- E: THE DAY -->
 <section class="pin" data-k="day" style="--h:560vh">
   <div class="stick">
-    <span class="eyebrow tag">Keep · 10 · Sara's day with NABD</span>
+    <span class="eyebrow tag">Retain · 10 · Sara's day with NABD</span>
     <div class="dayg">
       <ol class="tl" id="tl">
         <span class="fill" id="tlfill"></span>
@@ -937,7 +937,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <!-- LOOP -->
 <section class="pin" data-k="loop" style="--h:460vh">
   <div class="stick">
-    <span class="eyebrow tag">Keep · 11 · The closed loop</span>
+    <span class="eyebrow tag">Retain · 11 · The closed loop</span>
     <h2 class="lph" id="lph">Five steps. <span class="g">One loop.</span></h2>
     <div class="lpg">
       <div class="lpbox"><svg id="lpsvg" viewBox="0 0 600 600" aria-hidden="true"><defs><radialGradient id="lpglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#4FE0BE" stop-opacity=".5"/><stop offset="1" stop-color="#4FE0BE" stop-opacity="0"/></radialGradient></defs><circle cx="300" cy="300" r="230" fill="none" stroke="#18263A" stroke-width="18"/><circle id="lparc" cx="300" cy="300" r="230" fill="none" stroke="#4FE0BE" stroke-width="4" stroke-linecap="round" transform="rotate(-90 300 300)" stroke-dasharray="1445" stroke-dashoffset="1445" style="filter:drop-shadow(0 0 6px #4FE0BE)"/><circle id="lpdash" cx="300" cy="300" r="230" fill="none" stroke="#4FE0BE" stroke-width="4" stroke-dasharray="10 16" opacity="0"/><line class="lpsp" x1="300" y1="300" x2="300.0" y2="70.0" stroke="#8DB4FF" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="518.7" y2="228.9" stroke="#F0D9A8" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="435.2" y2="486.1" stroke="#4FE0BE" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="164.8" y2="486.1" stroke="#4FE0BE" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="81.3" y2="228.9" stroke="#FF6B57" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><circle cx="300" cy="300" r="150" fill="url(#lpglow)" id="lpglowc" opacity=".4"/><g id="lpcore"><circle cx="300" cy="300" r="84" fill="#0C1828" stroke="#4FE0BE" stroke-width="3"/><text x="300" y="300" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="40">NABD</text><text id="lpcoret" x="300" y="332" text-anchor="middle" fill="#A3B0C2" font-family="JetBrains Mono, monospace" font-size="15" letter-spacing="3">ENGINE</text></g><circle class="lppk" r="6" fill="#8DB4FF" opacity="0" style="filter:drop-shadow(0 0 6px #8DB4FF)"/><circle class="lppk" r="6" fill="#F0D9A8" opacity="0" style="filter:drop-shadow(0 0 6px #F0D9A8)"/><circle class="lppk" r="6" fill="#4FE0BE" opacity="0" style="filter:drop-shadow(0 0 6px #4FE0BE)"/><circle class="lppk" r="6" fill="#4FE0BE" opacity="0" style="filter:drop-shadow(0 0 6px #4FE0BE)"/><circle class="lppk" r="6" fill="#FF6B57" opacity="0" style="filter:drop-shadow(0 0 6px #FF6B57)"/><g class="lpn" data-x="300.0" data-y="70.0" style="transform-origin:300.0px 70.0px"><circle cx="300.0" cy="70.0" r="64" fill="#0E1B2E" stroke="#8DB4FF" stroke-width="3"/><text x="300.0" y="68.0" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Body</text><text x="300.0" y="94.0" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">wearables</text></g><g class="lpn" data-x="518.7" data-y="228.9" style="transform-origin:518.7px 228.9px"><circle cx="518.7" cy="228.9" r="64" fill="#0E1B2E" stroke="#F0D9A8" stroke-width="3"/><text x="518.7" y="226.9" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Plate</text><text x="518.7" y="252.9" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">food photo</text></g><g class="lpn" data-x="435.2" data-y="486.1" style="transform-origin:435.2px 486.1px"><circle cx="435.2" cy="486.1" r="64" fill="#0E1B2E" stroke="#4FE0BE" stroke-width="3"/><text x="435.2" y="484.1" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Gym</text><text x="435.2" y="510.1" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">check-ins</text></g><g class="lpn" data-x="164.8" data-y="486.1" style="transform-origin:164.8px 486.1px"><circle cx="164.8" cy="486.1" r="64" fill="#0E1B2E" stroke="#4FE0BE" stroke-width="3"/><text x="164.8" y="484.1" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Nudge</text><text x="164.8" y="510.1" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">via the coach</text></g><g class="lpn" data-x="81.3" data-y="228.9" style="transform-origin:81.3px 228.9px"><circle cx="81.3" cy="228.9" r="64" fill="#0E1B2E" stroke="#FF6B57" stroke-width="3"/><text x="81.3" y="226.9" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Reward</text><text x="81.3" y="252.9" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">streaks, perks</text></g><circle id="lpcomet" r="9" fill="#fff" style="filter:drop-shadow(0 0 10px #4FE0BE)"/></svg></div>
@@ -1003,7 +1003,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <!-- FUNNEL -->
 <section class="pin" data-k="funnel" style="--h:480vh">
   <div class="stick">
-    <span class="eyebrow tag">Win · 13 · Win them, keep them</span>
+    <span class="eyebrow tag">Win · 13 · Win them, retain them</span>
     <div class="fwrap" id="fwrap">
       <div class="refer" id="refer">
         <div class="avatar sa" aria-hidden="true"><span class="mono s">S</span></div>
@@ -1087,7 +1087,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
   <div class="wg">
     <div class="wc"><div class="ico"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="9" r="5" fill="none" stroke="#4FE0BE" stroke-width="2.4"/><path d="M4 25c1.5-6 5.5-9 10-9s8.5 3 10 9" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round"/></svg></div><span class="who">The member</span><h3>Feels progress</h3><ul><li>One app instead of three</li><li>Simple tips in her own language</li><li>Built for Saudi food and routines</li></ul></div>
     <div class="wc" style="transition-delay:.12s"><div class="ico"><svg width="28" height="28" viewBox="0 0 28 28"><path d="M3 20l6-6 5 4 10-10" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 8h6v6" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round"/></svg></div><span class="who">The trainer</span><h3>Sees who needs help</h3><ul><li>Early alert before a client drifts</li><li>A natural reason to offer PT sessions</li></ul></div>
-    <div class="wc" style="transition-delay:.24s"><div class="ico"><svg width="28" height="28" viewBox="0 0 28 28"><path d="M4 14h4l3-7 5 14 3-7h5" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="who">The gym</span><h3>Keep members. Win new ones.</h3><ul><li>Retention: members stay longer, and buy more PT</li><li>Acquisition: a free body check that brings people in</li><li>Referrals: members invite friends</li><li>Inside the gym's own app and brand</li></ul></div>
+    <div class="wc" style="transition-delay:.24s"><div class="ico"><svg width="28" height="28" viewBox="0 0 28 28"><path d="M4 14h4l3-7 5 14 3-7h5" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="who">The gym</span><h3>Retain members. Win new ones.</h3><ul><li>Retention: members stay longer, and buy more PT</li><li>Acquisition: a free body check that brings people in</li><li>Referrals: members invite friends</li><li>Inside the gym's own app and brand</li></ul></div>
   </div>
 </section>
 
@@ -1122,7 +1122,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 <section class="fin">
   <span class="ripple"></span><span class="ripple"></span><span class="ripple"></span>
   <div class="logo">NABD<span lang="ar">نبض</span></div>
-  <h2>Keep members longer. <span class="g">Win new ones faster.</span></h2>
+  <h2>Retain members longer. <span class="g">Win new ones faster.</span></h2>
   <p>NABD is the missing layer for gym apps: one view of each member's whole day, turned into the right action at the right moment.</p>
   <div class="biz"><div><small>RETENTION</small><b>Members who stay</b><span>Progress they can feel, and early alerts before anyone quits.</span></div><div><small>ACQUISITION</small><b>New members, faster</b><span>A free body check and a ready plan that turn browsers into members.</span></div><div><small>REVENUE</small><b>More per member</b><span>More reasons for PT, premium tiers and referrals.</span></div></div>
   <svg class="ecg2" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 H520 L540 60 L555 30 L570 90 L585 10 L605 110 L622 60 L650 60 L665 48 L680 60 H1200"/></svg>
@@ -1541,7 +1541,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
     var pulse = seg(p, .55, .75);
     sideK.style.boxShadow = '0 0 ' + (60 * pulse) + 'px rgba(255,107,87,' + (.35 * pulse) + ')';
     sideW.style.boxShadow = '0 0 ' + (60 * pulse) + 'px rgba(141,180,255,' + (.35 * pulse) + ')';
-    setCap(capTwo, p < .45 ? 'One gym. Two problems.' : p < .8 ? 'Keep the members it has. <span class="g">Win the ones it doesn\'t.</span>' : '<span class="g">NABD</span> solves both. Here\'s how.');
+    setCap(capTwo, p < .45 ? 'One gym. Two problems.' : p < .8 ? 'Retain the members it has. <span class="g">Win the ones it doesn\'t.</span>' : '<span class="g">NABD</span> solves both. Here\'s how.');
   }
 
   /* ---------- part cards ---------- */
@@ -1624,7 +1624,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
     var flowOn = seg(p, .7, .8), fh = $('fst').clientHeight;
     var tt = (t || performance.now()) / 1000;
     fdots.forEach(function(d, k){ var ph = (tt * .25 + k / fdots.length) % 1; d.style.top = (fh * .06 + ph * fh * .86) + 'px'; d.style.opacity = flowOn * Math.sin(ph * Math.PI); d.style.transform = 'translateX(' + (Math.sin(ph * 12 + k) * 30 * (1 - ph)) + 'px)'; });
-    setCap(capFn, p < .34 ? 'Sara shares her progress card.' : p < .5 ? 'Omar sees what\'s possible, <span style="color:var(--sky)">and gets an invite.</span>' : p < .84 ? 'NABD fills the top of the funnel, <span class="g">and plugs the bottom.</span>' : 'Win them. Keep them. <span class="g">One loop.</span>');
+    setCap(capFn, p < .34 ? 'Sara shares her progress card.' : p < .5 ? 'Omar sees what\'s possible, <span style="color:var(--sky)">and gets an invite.</span>' : p < .84 ? 'NABD fills the top of the funnel, <span class="g">and plugs the bottom.</span>' : 'Win them. Retain them. <span class="g">One loop.</span>');
   }
 
   /* ---------- truth ---------- */
@@ -1814,7 +1814,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
   var flipsEl = $('flips');
   probs.forEach(function(pr, i){
     var d = document.createElement('div'); d.className = 'fl';
-    var tg = '<span class="tg ' + pr[0] + '">' + (pr[0] === 'k' ? 'KEEP' : 'WIN') + '</span>';
+    var tg = '<span class="tg ' + pr[0] + '">' + (pr[0] === 'k' ? 'RETAIN' : 'WIN') + '</span>';
     d.innerHTML = '<div class="s f"><small>PROBLEM ' + (i + 1) + tg + '</small><b>' + pr[1] + '</b></div><div class="s b"><small>CLOSED ✓' + tg + '</small><b>' + pr[2] + '</b><span>' + pr[3] + '</span></div>';
     flipsEl.appendChild(d);
   });
