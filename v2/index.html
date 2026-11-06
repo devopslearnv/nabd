@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>NABD in 100 seconds</title>
+<title>NABD in 60 seconds</title>
 <meta name="description" content="NABD: the missing layer for gym apps. The pulse between workouts.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@ h1,h2,h3,p{margin:0}
 /* ---------- stage ---------- */
 #bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
 .vig{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 0%,rgba(5,6,10,.55) 70%,rgba(5,6,10,.9) 100%)}
-.scene{position:fixed;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 70px) max(20px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 90px) max(20px,env(safe-area-inset-left,0px));opacity:0;visibility:hidden;transform:scale(1.04);transition:opacity .7s var(--e),transform .9s var(--e),visibility .7s}
+.scene{position:fixed;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 70px) max(20px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 90px) max(20px,env(safe-area-inset-left,0px));opacity:0;visibility:hidden;transform:scale(1.04);transition:opacity .45s var(--e),transform .55s var(--e),visibility .45s}
 .scene.active{opacity:1;visibility:visible;transform:none}
 .scene.leave{opacity:0;transform:scale(.96)}
 .wrap{width:min(1120px,100%);text-align:center;position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,3vh,30px)}
@@ -38,7 +38,7 @@ h1,h2,h3,p{margin:0}
 .swap > *{grid-area:1/1}
 
 /* ---------- beat system: elements appear at data-at (ms), leave at data-out ---------- */
-[data-at]{opacity:0;transform:translateY(26px);filter:blur(10px);transition:opacity .9s var(--e),transform 1s var(--e),filter .9s var(--e)}
+[data-at]{opacity:0;transform:translateY(26px);filter:blur(10px);transition:opacity .5s var(--e),transform .6s var(--e),filter .5s var(--e)}
 [data-at].in{opacity:1;transform:none;filter:none}
 [data-at].gone{opacity:0!important;transform:translateY(-22px) scale(.97)!important;filter:blur(10px)!important;pointer-events:none}
 .fx-zoom:not(.in){transform:scale(.55)}
@@ -50,7 +50,7 @@ h1,h2,h3,p{margin:0}
 .fx-fade:not(.in){transform:none}
 .noanim *, .noanim{transition:none!important}
 .split[data-at]{opacity:1;transform:none;filter:none}
-.split .w{display:inline-block;opacity:0;transform:translateY(.45em) rotate(4deg);filter:blur(8px);transition:opacity .7s var(--e),transform .8s var(--e),filter .7s var(--e);transition-delay:calc(var(--i) * 75ms)}
+.split .w{display:inline-block;opacity:0;transform:translateY(.45em) rotate(4deg);filter:blur(8px);transition:opacity .45s var(--e),transform .5s var(--e),filter .45s var(--e);transition-delay:calc(var(--i) * 45ms)}
 .split.in .w{opacity:1;transform:none;filter:none}
 .split.gone .w{opacity:0;transform:translateY(-.3em);filter:blur(8px);transition-delay:0s}
 
@@ -102,7 +102,7 @@ h1,h2,h3,p{margin:0}
 .mt .val{font-family:var(--display);font-weight:800;font-size:clamp(30px,3.8vw,52px);line-height:1;letter-spacing:-.03em;white-space:nowrap}
 .mt .row1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .bar{position:relative;height:10px;border-radius:6px;background:#16243A;overflow:visible}
-.bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:6px;background:linear-gradient(90deg,#ff8a78,var(--red));transition:width 1.6s var(--e)}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:6px;background:linear-gradient(90deg,#ff8a78,var(--red));transition:width 1s var(--e)}
 .bar.in i{width:var(--w)}
 .bar .need{position:absolute;top:-4px;bottom:-4px;border:1.5px dashed var(--green);border-radius:7px;left:var(--nl);right:var(--nr)}
 .mt .need-t{font-size:13px;color:var(--green)}
@@ -120,7 +120,7 @@ h1,h2,h3,p{margin:0}
 .card .bn{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--muted)}
 .card .nm{font-family:var(--display);font-weight:800;font-size:clamp(28px,4vw,40px)}
 .card .since{color:var(--muted);font-size:14px}
-.card .half{position:absolute;inset:0;background:inherit;transition:transform 1.1s var(--e)}
+.card .half{position:absolute;inset:0;background:inherit;transition:transform .7s var(--e)}
 .stamp{position:absolute;left:50%;top:50%;font-family:var(--mono);font-weight:600;font-size:clamp(22px,3.4vw,34px);letter-spacing:.2em;color:var(--red);border:3px solid var(--red);border-radius:12px;padding:6px 16px;transform:translate(-50%,-50%) rotate(-12deg)}
 .stamp:not(.in){transform:translate(-50%,-50%) rotate(-12deg) scale(2.4)!important}
 .stamp.in{transform:translate(-50%,-50%) rotate(-12deg)}
@@ -136,7 +136,7 @@ h1,h2,h3,p{margin:0}
 .ad .jb{margin-top:6px;align-self:flex-start;background:#22344D;color:var(--ink);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:600}
 .ad .same{position:absolute;right:10px;top:10px;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.16em;color:var(--red);border:2px solid var(--red);border-radius:8px;padding:2px 8px;transform:rotate(10deg)}
 .ad .same:not(.in){transform:rotate(10deg) scale(2.2)}
-.ads.fall .ad{transition:transform 1.2s cubic-bezier(.5,0,.8,.3),opacity 1.2s;opacity:0;transform:translateY(60vh) rotate(var(--rot))}
+.ads.fall .ad{transition:transform .8s cubic-bezier(.5,0,.8,.3),opacity .8s;opacity:0;transform:translateY(60vh) rotate(var(--rot))}
 
 /* ---------- S6 reveal ---------- */
 .reveal .logo{font-size:clamp(110px,26vw,340px)}
@@ -198,7 +198,7 @@ h1,h2,h3,p{margin:0}
 /* ---------- S10 outcome ---------- */
 .flips{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;width:min(760px,100%)}
 .fl{aspect-ratio:1;border-radius:12px;perspective:600px}
-.fl .in2{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s var(--e)}
+.fl .in2{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s var(--e)}
 .fl.on .in2{transform:rotateY(180deg)}
 .fl .f,.fl .bk{position:absolute;inset:0;border-radius:12px;display:grid;place-items:center;backface-visibility:hidden;font-family:var(--mono);font-size:12px}
 .fl .f{background:rgba(255,107,87,.08);border:1.5px dashed rgba(255,107,87,.6);color:var(--red)}
@@ -658,6 +658,7 @@ h1,h2,h3,p{margin:0}
 
   /* ---------- timeline engine ---------- */
   var scenes = [].slice.call(document.querySelectorAll('.scene')), N = scenes.length;
+  var SPEED = 1.6; /* whole film plays 1.6x faster than the authored timings */
   var si = 0, t = 0, playing = !reduce, last = performance.now();
   var prog = $('prog'), bars = [];
   scenes.forEach(function(s, i){
@@ -684,7 +685,7 @@ h1,h2,h3,p{margin:0}
   }
   function enter(i, at){
     scenes[si].classList.remove('active');
-    var prev = scenes[si]; prev.classList.add('leave'); setTimeout(function(){ prev.classList.remove('leave'); }, 700);
+    var prev = scenes[si]; prev.classList.add('leave'); setTimeout(function(){ prev.classList.remove('leave'); }, 450);
     si = i; t = at || 0;
     var s = scenes[si];
     BG.flat = false; BG.mood(s.getAttribute('data-mood'));
@@ -695,7 +696,7 @@ h1,h2,h3,p{margin:0}
   }
   function go(i, at){ if (i < 0 || i >= N) return; enter(i, at); if (reduce){ t = dur(si); apply(); } }
   function next(){ if (si < N - 1) go(si + 1); }
-  function prev(){ if (t > 1500) go(si); else if (si > 0) go(si - 1); }
+  function prev(){ if (t > 2400) go(si); else if (si > 0) go(si - 1); }
   /* first tap finishes the current scene, the next one moves on */
   function advance(){ if (t < dur(si) - 300){ t = dur(si) - 1; apply(); } else next(); }
   function setPlay(v){
@@ -707,7 +708,7 @@ h1,h2,h3,p{margin:0}
     var dt = Math.min(100, now - last); last = now;
     if (!playing || document.hidden) return;
     var d = dur(si);
-    if (t < d){ t = Math.min(d, t + dt); apply(); }
+    if (t < d){ t = Math.min(d, t + dt * SPEED); apply(); }
     else if (si < N - 1){ next(); }
     else setPlay(false);
   }
