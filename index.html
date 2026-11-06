@@ -638,8 +638,12 @@ html.slock{overflow:hidden;overscroll-behavior:none}
 .modesw button:hover{color:var(--ink)}
 .toc{display:flex;gap:8px;align-items:flex-start}
 .toc .tocwrap{position:relative}
-.sctl{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:40;display:none;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
-html.slides .sctl{display:flex}
+.sctl{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:40;display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
+.sctl .sl-only{display:none}
+html.slides .sctl .sl-only{display:flex}
+html.slides .sctl span.sl-only{display:inline-block}
+html.slides .sctl span.sdots{display:flex}
+.sctl .nav{align-items:center;justify-content:center;padding:0 0 2px;font-size:20px}
 .sctl button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(10,16,28,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);font-size:18px;line-height:1;cursor:pointer;transition:border-color .2s}
 .sctl button:hover{border-color:var(--green)}
 .sctl span{padding:0 6px;min-width:54px;text-align:center}
@@ -647,7 +651,32 @@ html.slides .sctl{display:flex}
 .sdots i{width:5px;height:5px;border-radius:50%;background:rgba(238,242,247,.25);transition:background .2s,transform .2s}
 .sdots i.on{background:var(--ink);transform:scale(1.25)}
 html.slides .hero .mouse{display:none}
-@media (pointer:coarse){.sctl button{display:none}.sctl{bottom:calc(env(safe-area-inset-bottom,0px) + 10px)}}
+.sctl .ghost{width:32px;height:32px;display:flex;align-items:center;justify-content:center;padding:0;opacity:.55;transition:opacity .2s,border-color .2s}
+.sctl .ghost:hover,.sctl .ghost:focus-visible,.sctl .ghost.on{opacity:1}
+.sctl .ghost svg{width:13px;height:13px;fill:currentColor}
+.sctl .ghost .i-pause{display:none}
+.sctl .ghost.on .i-play{display:none}.sctl .ghost.on .i-pause{display:block}
+.sctl .ghost.on{border-color:var(--green)}
+.sctl .sep{width:1px;height:18px;background:var(--line);margin:0 2px}
+@media (pointer:coarse){.sctl .nav{display:none}.sctl{bottom:calc(env(safe-area-inset-bottom,0px) + 10px)}}
+/* ---------- mobile ---------- */
+@media (max-width:700px){
+  .toc{top:calc(env(safe-area-inset-top,0px) + 10px);right:max(10px,env(safe-area-inset-right,0px))}
+  .toc > .modesw{display:none}
+  .tocbtn{padding:0;width:40px;height:40px;justify-content:center;gap:0}
+  .tocbtn #toccur,.tocbtn .tocdot{display:none}
+  .tocp .modesw{display:flex;margin:4px 6px 10px}
+  .tocp .modesw button{flex:1;padding:9px 0;font-size:11px}
+  .tag{max-width:calc(100% - 128px);width:auto;font-size:11px;letter-spacing:.12em;line-height:1.5}
+  .others .oc span:nth-child(n+4){display:none}
+  .others{gap:8px}
+  .others .ol{font-size:10.5px;max-width:30ch;text-align:center}
+  .sctl{right:max(10px,env(safe-area-inset-right,0px))}
+  .sctl span{min-width:44px;padding:0 4px}
+}
+@media (min-width:701px){.tocp .modesw{display:none}}
+.sctl{transition:opacity .3s}
+html.inend .sctl{opacity:0;pointer-events:none}
 @media (max-width:600px){.modesw button{padding:5px 8px;font-size:10px}}
 @media print{.sctl,.modesw{display:none}}
 </style>
@@ -666,7 +695,7 @@ html.slides .hero .mouse{display:none}
   <div class="tocp" id="tocp" hidden></div>
   </div>
 </nav>
-<div class="sctl" id="sctl"><span class="sdots" id="sdots" aria-hidden="true"></span><button type="button" id="sprev" aria-label="Previous step">&lsaquo;</button><span id="scount">1 / 1</span><button type="button" id="snext" aria-label="Next step">&rsaquo;</button></div>
+<div class="sctl" id="sctl"><span class="sdots sl-only" id="sdots" aria-hidden="true"></span><button type="button" class="ghost sl-only" id="sreplay" aria-label="Replay this part (R)" title="Replay this part (R)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button><button type="button" class="ghost" id="splay" aria-label="Play (P)" aria-pressed="false" title="Play / pause (P)"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg></button><i class="sep sl-only"></i><button type="button" class="nav sl-only" id="sprev" aria-label="Previous step">&lsaquo;</button><span id="scount" class="sl-only">1 / 1</span><button type="button" class="nav sl-only" id="snext" aria-label="Next step">&rsaquo;</button></div>
 <main>
 
 <!-- HERO -->
@@ -2295,9 +2324,9 @@ html.slides .hero .mouse{display:none}
       try { localStorage.setItem('nabd-mode', m); } catch(e){}
       if (hint) hint.textContent = m === 'slides' ? (fine ? 'Click or press → to begin' : 'Tap or swipe to begin') : hintTxt;
       keys.innerHTML = m === 'slides'
-        ? '<kbd>&rarr;</kbd> / click next step &nbsp; <kbd>&larr;</kbd> back<br><kbd>Shift</kbd>+<kbd>&rarr;</kbd> skip to next part &nbsp; <kbd>1</kbd>&ndash;<kbd>8</kbd> chapters &nbsp; <kbd>M</kbd> menu'
+        ? '<kbd>&rarr;</kbd> / click next step &nbsp; <kbd>&larr;</kbd> back<br><kbd>Shift</kbd>+<kbd>&rarr;</kbd> skip to next part &nbsp; <kbd>1</kbd>&ndash;<kbd>8</kbd> chapters<br><kbd>P</kbd> play / pause &nbsp; <kbd>R</kbd> replay part &nbsp; <kbd>M</kbd> menu'
         : '<kbd>&larr;</kbd> <kbd>&rarr;</kbd> previous / next part &nbsp; <kbd>1</kbd>&ndash;<kbd>8</kbd> chapters<br><kbd>M</kbd> this menu &nbsp; <kbd>Esc</kbd> close';
-      if (m === 'scroll'){ lock(false); return; }
+      if (m === 'scroll'){ if (typeof setPlaying === 'function' && playing) setPlaying(false); lock(false); return; }
       /* entering slides: continue from wherever the reader is */
       if (freeEl && window.scrollY >= top(freeEl) - window.innerHeight * .5){ lock(false); paintCtl(); return; }
       var y = window.scrollY + 2, n = 0;
@@ -2308,6 +2337,9 @@ html.slides .hero .mouse{display:none}
       if (keepPos !== false) tweenTo(S[k]);
       paintCtl();
     }
+    var mq = window.matchMedia('(max-width:700px)');
+    function placeSwitch(){ if (mq.matches){ if (msw.parentNode !== panel) panel.insertBefore(msw, panel.firstChild); } else if (msw.parentNode !== $('toc')) $('toc').insertBefore(msw, $('toc').firstChild); }
+    placeSwitch(); if (mq.addEventListener) mq.addEventListener('change', placeSwitch); else if (mq.addListener) mq.addListener(placeSwitch);
     msw.addEventListener('click', function(e){ var b = e.target.closest('button'); if (b) setMode(b.getAttribute('data-m')); });
     if (reduce) msw.style.display = 'none';
 
@@ -2332,6 +2364,8 @@ html.slides .hero .mouse{display:none}
       var key = e.key;
       if (key === 'Escape' && !panel.hidden){ open(false); btn.focus(); return; }
       if (key === 'm' || key === 'M'){ e.preventDefault(); open(panel.hidden); return; }
+      if ((key === 'p' || key === 'P') && panel.hidden){ e.preventDefault(); setPlaying(!playing); return; }
+      if ((key === 'r' || key === 'R') && panel.hidden && mode === 'slides'){ e.preventDefault(); replay(); return; }
       if (/^[1-8]$/.test(key)){ var ch = CH[+key - 1]; if (ch && ch.first){ e.preventDefault(); go(ch.first); } return; }
       if (!panel.hidden) return;
       if (mode === 'slides'){
@@ -2386,6 +2420,50 @@ html.slides .hero .mouse{display:none}
       var sel = window.getSelection && String(window.getSelection()); if (sel) return;
       if (e.clientX < window.innerWidth * .3) prev(); else next();
     });
+    /* ---------- replay + autoplay ---------- */
+    var playing = false, settled = 0, splay = $('splay');
+    function atEnd(){ return free || (si === SL.length - 1 && k === SL[si].stops.length - 1); }
+    function setPlaying(v){
+      playing = v; settled = 0;
+      splay.classList.toggle('on', v); splay.setAttribute('aria-pressed', v ? 'true' : 'false');
+      splay.setAttribute('aria-label', v ? 'Pause (P)' : 'Play (P)');
+      if (v){
+        if (mode !== 'slides') setMode('slides');
+        if (atEnd()) go(SL[0]);
+      }
+    }
+    function dwell(){
+      var S = SL[si].stops;
+      if (S.length === 1) return 1500;                 /* title moments */
+      return k === S.length - 1 ? 3200 : 2600;          /* time to read each caption */
+    }
+    setInterval(function(){
+      if (!playing || mode !== 'slides') return;
+      if (document.hidden){ setPlaying(false); return; }
+      if (busy || tw){ settled = 0; return; }
+      var now = performance.now();
+      if (!settled){ settled = now; return; }
+      if (now - settled < dwell()) return;
+      settled = 0;
+      if (atEnd()){ setPlaying(false); return; }
+      next();
+    }, 150);
+    function replay(){
+      if (mode !== 'slides' || free || busy) return;
+      stopTween(); settled = 0;
+      var S = SL[si].stops; k = 0;
+      var el = stickOf(SL[si]);
+      var a = el.animate ? el.animate([{opacity: 1}, {opacity: 0}], {duration: 220, fill: 'forwards'}) : null;
+      once(a, function(){
+        setY(yAt(SL[si], 0));
+        if (a) a.cancel();
+        if (el.animate) el.animate([{opacity: 0}, {opacity: 1}], {duration: 260});
+        if (S[0] > 0) tweenTo(S[0]);
+        paintCtl();
+      }, 300);
+    }
+    splay.addEventListener('click', function(e){ e.stopPropagation(); setPlaying(!playing); });
+    $('sreplay').addEventListener('click', function(e){ e.stopPropagation(); replay(); });
     $('snext').addEventListener('click', function(e){ e.stopPropagation(); next(); });
     $('sprev').addEventListener('click', function(e){ e.stopPropagation(); prev(); });
 
@@ -2394,6 +2472,7 @@ html.slides .hero .mouse{display:none}
     window.addEventListener('scroll', function(){
       if (!sy){ sy = true; requestAnimationFrame(function(){
         sy = false; sync();
+        if (freeEl) root.classList.toggle('inend', window.scrollY >= top(freeEl) - window.innerHeight * .5);
         if (mode === 'slides' && free && !busy && freeEl){
           var last = SL[SL.length - 1], endY = yAt(last, 1);
           if (window.scrollY <= endY + 2){ si = SL.length - 1; k = last.stops.length - 1; lock(true); setY(endY); paintCtl(); }
