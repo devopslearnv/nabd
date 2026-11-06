@@ -640,6 +640,7 @@ html.slock{overflow:hidden;overscroll-behavior:none}
 .toc .tocwrap{position:relative}
 .sctl{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:40;display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
 .sctl .sl-only{display:none}
+html:not(.slides) .sctl .sl-only{display:none!important}
 html.slides .sctl .sl-only{display:flex}
 html.slides .sctl span.sl-only{display:inline-block}
 html.slides .sctl span.sdots{display:flex}
@@ -679,6 +680,17 @@ html.slides .hero .mouse{display:none}
 html.inend .sctl{opacity:0;pointer-events:none}
 @media (max-width:600px){.modesw button{padding:5px 8px;font-size:10px}}
 @media print{.sctl,.modesw{display:none}}
+
+/* ---------- merged scenes ---------- */
+.cstack{display:grid;width:100%;place-items:center;flex:0 1 auto;min-height:0}
+.cstack > .cblk{grid-area:1/1;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(16px,3vh,30px);will-change:opacity,transform}
+.cblk.ptitle{gap:clamp(10px,2vh,20px)}
+.cblk.ptitle .pbig{margin:0}
+.static .cstack{display:flex;flex-direction:column;gap:56px}
+.static .pbig span{opacity:1!important}
+.fin .winsh{font-family:var(--display);font-size:clamp(22px,3vw,34px);line-height:1.1;position:relative;margin:0}
+.fin .wg{width:min(1080px,100%);text-align:left;position:relative}
+@media (max-width:860px){.fin .wg{grid-template-columns:minmax(0,1fr);gap:12px}.fin .wc{padding:20px}.fin .wc h3{font-size:22px}}
 </style>
 </head>
 <body>
@@ -698,7 +710,6 @@ html.inend .sctl{opacity:0;pointer-events:none}
 <div class="sctl" id="sctl"><span class="sdots sl-only" id="sdots" aria-hidden="true"></span><button type="button" class="ghost sl-only" id="sreplay" aria-label="Replay this part (R)" title="Replay this part (R)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button><button type="button" class="ghost" id="splay" aria-label="Play (P)" aria-pressed="false" title="Play / pause (P)"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></svg></button><i class="sep sl-only"></i><button type="button" class="nav sl-only" id="sprev" aria-label="Previous step">&lsaquo;</button><span id="scount" class="sl-only">1 / 1</span><button type="button" class="nav sl-only" id="snext" aria-label="Next step">&rsaquo;</button></div>
 <main>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hgrid">
     <div class="hl">
@@ -726,9 +737,7 @@ html.inend .sctl{opacity:0;pointer-events:none}
   <span class="hint" style="position:relative">Scroll to see the story</span>
 </section>
 
-
-<!-- TWO PROBLEMS -->
-<section class="pin" data-k="two" style="--h:300vh">
+<section class="pin" data-k="two" style="--h:220vh">
   <div class="stick">
     <span class="eyebrow tag">One gym · Two problems</span>
     <div class="twog">
@@ -739,18 +748,17 @@ html.inend .sctl{opacity:0;pointer-events:none}
   </div>
 </section>
 
-<section class="pin pcard2 pk" data-k="part" style="--h:230vh">
+<section class="pin" data-k="sara" style="--h:480vh">
   <div class="stick">
+    <span class="eyebrow tag">Retain · 01 · Meet Sara</span>
+    <div class="cstack" id="cs-sara">
+      <div class="cblk ptitle pk" id="cb-sara-a">
     <span class="eyebrow">Part 1 · What gym apps miss: retention</span>
     <h2 class="pbig" aria-label="RETAIN"><span>R</span><span>E</span><span>T</span><span>A</span><span>I</span><span>N</span></h2>
     <p class="psm">the members you already have.</p>
-  </div>
-</section>
-
-<!-- A: SARA -->
-<section class="pin" data-k="sara" style="--h:420vh">
-  <div class="stick">
-    <span class="eyebrow tag">Retain · 01 · Meet Sara</span>
+  
+      </div>
+      <div class="cblk " id="cb-sara-b">
     <div style="position:relative;display:flex;align-items:center;justify-content:center;min-height:clamp(220px,30vh,260px);width:100%">
       <div class="avatar" id="av" aria-hidden="true">
         <div class="halo" id="halo"></div>
@@ -764,11 +772,13 @@ html.inend .sctl{opacity:0;pointer-events:none}
     </div>
     <p class="cap" id="capA">This is Sara. She is a gym member.</p>
     <div class="weeks" id="weeks" aria-hidden="true"></div>
+  
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- B: 24 HOURS -->
-<section class="pin" data-k="clock" style="--h:380vh">
+<section class="pin" data-k="clock" style="--h:280vh">
   <div class="stick">
     <span class="eyebrow tag">Retain · 02 · Why she stalls</span>
     <div class="clockbox">
@@ -780,27 +790,9 @@ html.inend .sctl{opacity:0;pointer-events:none}
   </div>
 </section>
 
-<!-- C: APPS -->
-<section class="pin" data-k="apps" style="--h:320vh">
+<section class="pin" data-k="miss" style="--h:340vh">
   <div class="stick">
-    <span class="eyebrow tag">Retain · 03 · Her apps don't talk</span>
-    <div class="apps" id="apps">
-      <div class="app w" id="appW"><span class="nm">Watch app</span><span class="sm">Last night</span><span class="big">5h 10m</span><span class="sm">sleep · low recovery</span><div class="row"></div><div class="row" style="width:70%"></div></div>
-      <div class="app gn" id="appG"><span class="nm">Gym app</span><span class="sm">Tonight</span><span class="big">GRIT</span><span class="sm">high intensity · booked</span><div class="row"></div><div class="row" style="width:60%"></div></div>
-      <div class="app f" id="appF"><span class="nm">Calorie app</span><span class="sm">Lunch</span><span class="big">? kcal</span><span class="sm">kabsa not found</span><div class="row"></div><div class="row" style="width:50%"></div></div>
-      <svg class="links" id="links"></svg>
-      <span class="xb" id="x1">✕</span><span class="xb" id="x2">✕</span>
-    </div>
-    <p class="cap" id="capC">Sara's data exists.</p>
-  </div>
-</section>
-
-
-
-<!-- PROTEIN MISSED -->
-<section class="pin" data-k="miss" style="--h:470vh">
-  <div class="stick">
-    <span class="eyebrow tag">Retain · 04 · The missing protein</span>
+    <span class="eyebrow tag">Retain · 03 · The missing protein</span>
     <div class="miss">
       <div class="mchart" id="mchart">
         <div class="need" id="need"><span>Her need: 91 g+</span></div>
@@ -820,10 +812,22 @@ html.inend .sctl{opacity:0;pointer-events:none}
   </div>
 </section>
 
-<!-- TRUTH -->
-<section class="pin" data-k="truth" style="--h:340vh">
+<section class="pin" data-k="appsT" style="--h:480vh">
   <div class="stick">
-    <span class="eyebrow tag">Retain · 05 · Her week, in numbers</span>
+    <span class="eyebrow tag">Retain · 04 · Three apps, three warnings</span>
+    <div class="cstack" id="cs-apps">
+      <div class="cblk " id="cb-apps-a">
+    <div class="apps" id="apps">
+      <div class="app w" id="appW"><span class="nm">Watch app</span><span class="sm">Last night</span><span class="big">5h 10m</span><span class="sm">sleep · low recovery</span><div class="row"></div><div class="row" style="width:70%"></div></div>
+      <div class="app gn" id="appG"><span class="nm">Gym app</span><span class="sm">Tonight</span><span class="big">GRIT</span><span class="sm">high intensity · booked</span><div class="row"></div><div class="row" style="width:60%"></div></div>
+      <div class="app f" id="appF"><span class="nm">Calorie app</span><span class="sm">Lunch</span><span class="big">? kcal</span><span class="sm">kabsa not found</span><div class="row"></div><div class="row" style="width:50%"></div></div>
+      <svg class="links" id="links"></svg>
+      <span class="xb" id="x1">✕</span><span class="xb" id="x2">✕</span>
+    </div>
+    <p class="cap" id="capC">Sara's data exists.</p>
+  
+      </div>
+      <div class="cblk " id="cb-apps-b">
     <p class="cap" id="capT" style="min-height:1.2em">The warning signs were there.</p>
     <div class="meters">
       <div class="mt"><div class="top"><b>Sleep, nightly average</b><span class="val" id="tv0">0h</span></div>
@@ -836,22 +840,23 @@ html.inend .sctl{opacity:0;pointer-events:none}
         <div class="track"><div class="band" style="left:50%;right:0"></div><div class="fx" id="tf2"></div></div>
         <div class="gl"><span>Gym app: 3 GRIT classes</span><span class="bad" id="tb2">BELOW GUIDELINE</span><span class="g">Guideline: 2+ days</span></div></div>
     </div>
+  
+      </div>
+    </div>
   </div>
 </section>
 
-
-<section class="pin pcard2 pw" data-k="part" style="--h:230vh">
+<section class="pin" data-k="omar" style="--h:470vh">
   <div class="stick">
+    <span class="eyebrow tag">Win · 05 · Meet Omar</span>
+    <div class="cstack" id="cs-omar">
+      <div class="cblk ptitle pw" id="cb-omar-a">
     <span class="eyebrow">Part 2 · What gym apps miss: acquisition</span>
     <h2 class="pbig" aria-label="WIN"><span>W</span><span>I</span><span>N</span></h2>
     <p class="psm">the ones who haven't joined yet.</p>
-  </div>
-</section>
-
-<!-- OMAR PROBLEM -->
-<section class="pin" data-k="omar" style="--h:440vh">
-  <div class="stick">
-    <span class="eyebrow tag">Win · 06 · Meet Omar</span>
+  
+      </div>
+      <div class="cblk " id="cb-omar-b">
     <div class="avatar" id="om" style="width:clamp(90px,15vh,140px)" aria-hidden="true"><span class="mono o">O</span></div>
     <div class="ostage" id="ostage" aria-hidden="true">
       <span class="ochip" id="oc0">Watch: <b>4,200 steps</b> a day</span>
@@ -862,21 +867,21 @@ html.inend .sctl{opacity:0;pointer-events:none}
       <div class="ad"><span class="gn">GYM C</span><b>Modern equipment</b><span>100+ classes a week</span><span class="jb">Join today</span><span class="same">SAME</span></div>
     </div>
     <p class="cap" id="capO">This is Omar. He's not a member yet.</p>
+  
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- WORDS -->
-<section class="pin" data-k="words" style="--h:220vh">
-  <div class="stick" style="justify-content:flex-start;padding-top:max(90px,14vh)">
-    <span class="eyebrow tag">Part 3 · Meet NABD</span>
-    <p class="words" id="words" aria-label="What if every gym app could see the whole day?"></p>
-  </div>
-</section>
-
-<!-- D: BUILD -->
-<section class="pin" data-k="build" style="--h:620vh">
+<section class="pin" data-k="build" style="--h:560vh">
   <div class="stick">
-    <span class="eyebrow tag">NABD · 07 · Built layer by layer</span>
+    <span class="eyebrow tag">NABD · 06 · Six layers, one app</span>
+    <div class="cstack" id="cs-build">
+      <div class="cblk wordsblk" id="cb-build-a">
+    <p class="words" id="words" aria-label="What if every gym app could see the whole day?"></p>
+  
+      </div>
+      <div class="cblk " id="cb-build-b">
     <div class="build">
       <div class="stage" id="stage3d">
         <div class="iso" id="iso">
@@ -927,23 +932,38 @@ html.inend .sctl{opacity:0;pointer-events:none}
       </div>
     </div>
     <p class="merged" id="merged">No new download. <span class="g">It's all inside the gym's own app.</span></p>
+  
+      </div>
+    </div>
   </div>
 </section>
 
-
-<!-- DOTS -->
-<section class="pin" data-k="dots" style="--h:340vh">
+<section class="pin" data-k="engine" style="--h:560vh">
   <div class="stick">
-    <span class="eyebrow tag">NABD · 08 · Connecting the dots</span>
+    <span class="eyebrow tag">NABD · 07 · The engine</span>
+    <div class="cstack" id="cs-engine">
+      <div class="cblk " id="cb-eng-a">
     <div class="flow"><svg class="desk" id="flowD" viewBox="0 0 1000 470" aria-hidden="true"></svg><svg class="mob" id="flowM" viewBox="0 0 400 700" aria-hidden="true"></svg></div>
     <p class="cap" id="capD" style="min-height:1.2em">Three signals go in.</p>
+  
+      </div>
+      <div class="cblk " id="cb-eng-b">
+    <h2 class="lph" id="lph">Five steps. <span class="g">One loop.</span></h2>
+    <div class="lpg">
+      <div class="lpbox"><svg id="lpsvg" viewBox="0 0 600 600" aria-hidden="true"><defs><radialGradient id="lpglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#4FE0BE" stop-opacity=".5"/><stop offset="1" stop-color="#4FE0BE" stop-opacity="0"/></radialGradient></defs><circle cx="300" cy="300" r="230" fill="none" stroke="#18263A" stroke-width="18"/><circle id="lparc" cx="300" cy="300" r="230" fill="none" stroke="#4FE0BE" stroke-width="4" stroke-linecap="round" transform="rotate(-90 300 300)" stroke-dasharray="1445" stroke-dashoffset="1445" style="filter:drop-shadow(0 0 6px #4FE0BE)"/><circle id="lpdash" cx="300" cy="300" r="230" fill="none" stroke="#4FE0BE" stroke-width="4" stroke-dasharray="10 16" opacity="0"/><line class="lpsp" x1="300" y1="300" x2="300.0" y2="70.0" stroke="#8DB4FF" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="518.7" y2="228.9" stroke="#F0D9A8" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="435.2" y2="486.1" stroke="#4FE0BE" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="164.8" y2="486.1" stroke="#4FE0BE" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="81.3" y2="228.9" stroke="#FF6B57" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><circle cx="300" cy="300" r="150" fill="url(#lpglow)" id="lpglowc" opacity=".4"/><g id="lpcore"><circle cx="300" cy="300" r="84" fill="#0C1828" stroke="#4FE0BE" stroke-width="3"/><text x="300" y="300" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="40">NABD</text><text id="lpcoret" x="300" y="332" text-anchor="middle" fill="#A3B0C2" font-family="JetBrains Mono, monospace" font-size="15" letter-spacing="3">ENGINE</text></g><circle class="lppk" r="6" fill="#8DB4FF" opacity="0" style="filter:drop-shadow(0 0 6px #8DB4FF)"/><circle class="lppk" r="6" fill="#F0D9A8" opacity="0" style="filter:drop-shadow(0 0 6px #F0D9A8)"/><circle class="lppk" r="6" fill="#4FE0BE" opacity="0" style="filter:drop-shadow(0 0 6px #4FE0BE)"/><circle class="lppk" r="6" fill="#4FE0BE" opacity="0" style="filter:drop-shadow(0 0 6px #4FE0BE)"/><circle class="lppk" r="6" fill="#FF6B57" opacity="0" style="filter:drop-shadow(0 0 6px #FF6B57)"/><g class="lpn" data-x="300.0" data-y="70.0" style="transform-origin:300.0px 70.0px"><circle cx="300.0" cy="70.0" r="64" fill="#0E1B2E" stroke="#8DB4FF" stroke-width="3"/><text x="300.0" y="68.0" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Body</text><text x="300.0" y="94.0" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">wearables</text></g><g class="lpn" data-x="518.7" data-y="228.9" style="transform-origin:518.7px 228.9px"><circle cx="518.7" cy="228.9" r="64" fill="#0E1B2E" stroke="#F0D9A8" stroke-width="3"/><text x="518.7" y="226.9" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Plate</text><text x="518.7" y="252.9" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">food photo</text></g><g class="lpn" data-x="435.2" data-y="486.1" style="transform-origin:435.2px 486.1px"><circle cx="435.2" cy="486.1" r="64" fill="#0E1B2E" stroke="#4FE0BE" stroke-width="3"/><text x="435.2" y="484.1" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Gym</text><text x="435.2" y="510.1" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">check-ins</text></g><g class="lpn" data-x="164.8" data-y="486.1" style="transform-origin:164.8px 486.1px"><circle cx="164.8" cy="486.1" r="64" fill="#0E1B2E" stroke="#4FE0BE" stroke-width="3"/><text x="164.8" y="484.1" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Nudge</text><text x="164.8" y="510.1" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">via the coach</text></g><g class="lpn" data-x="81.3" data-y="228.9" style="transform-origin:81.3px 228.9px"><circle cx="81.3" cy="228.9" r="64" fill="#0E1B2E" stroke="#FF6B57" stroke-width="3"/><text x="81.3" y="226.9" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Reward</text><text x="81.3" y="252.9" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">streaks, perks</text></g><circle id="lpcomet" r="9" fill="#fff" style="filter:drop-shadow(0 0 10px #4FE0BE)"/></svg></div>
+      <ol class="lpl" id="lpl"><li><span class="k">1</span><div><b>Body: how did she sleep and recover?</b><span>Apple Watch, Fitbit, Garmin and Samsung through Apple Health and Health Connect, plus WHOOP.</span></div></li><li><span class="k">2</span><div><b>Plate: what did she eat?</b><span>One photo. The food model knows kabsa, mandi, dates and local chains.</span></div></li><li><span class="k">3</span><div><b>Gym: what did she do?</b><span>Check-ins, classes and PT sessions from the gym's own app.</span></div></li><li><span class="k">4</span><div><b>Nudge: what should she do next?</b><span>NABD scores readiness and drop-off risk. The coach says one clear thing, in Arabic or English.</span></div></li><li><span class="k">5</span><div><b>Reward: make it stick</b><span>Streaks for sleeping and eating well, not just showing up. Free classes and partner perks.</span></div></li></ol>
+    </div>
+  
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- PLAN -->
-<section class="pin" data-k="plan" style="--h:520vh">
+<section class="pin" data-k="sday" style="--h:700vh">
   <div class="stick">
-    <span class="eyebrow tag">Retain · 09 · Sara's week, rebuilt</span>
+    <span class="eyebrow tag">Retain · 08 · Sara's day with NABD</span>
+    <div class="cstack" id="cs-sday">
+      <div class="cblk " id="cb-sday-a">
     <div class="planw">
       <div id="panA">
         <h3 class="ph">This week's workout plan</h3>
@@ -964,13 +984,9 @@ html.inend .sctl{opacity:0;pointer-events:none}
         <div class="badges"><span class="badge" id="bB1">Spread across the day, 20–40 g a meal ✓</span><span class="badge" id="bB2">Saudi meals she already eats ✓</span></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- E: THE DAY -->
-<section class="pin" data-k="day" style="--h:560vh">
-  <div class="stick">
-    <span class="eyebrow tag">Retain · 10 · Sara's day with NABD</span>
+  
+      </div>
+      <div class="cblk " id="cb-sday-b">
     <div class="dayg">
       <ol class="tl" id="tl">
         <span class="fill" id="tlfill"></span>
@@ -1017,26 +1033,39 @@ html.inend .sctl{opacity:0;pointer-events:none}
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-<!-- LOOP -->
-<section class="pin" data-k="loop" style="--h:460vh">
-  <div class="stick">
-    <span class="eyebrow tag">Retain · 11 · The closed loop</span>
-    <h2 class="lph" id="lph">Five steps. <span class="g">One loop.</span></h2>
-    <div class="lpg">
-      <div class="lpbox"><svg id="lpsvg" viewBox="0 0 600 600" aria-hidden="true"><defs><radialGradient id="lpglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#4FE0BE" stop-opacity=".5"/><stop offset="1" stop-color="#4FE0BE" stop-opacity="0"/></radialGradient></defs><circle cx="300" cy="300" r="230" fill="none" stroke="#18263A" stroke-width="18"/><circle id="lparc" cx="300" cy="300" r="230" fill="none" stroke="#4FE0BE" stroke-width="4" stroke-linecap="round" transform="rotate(-90 300 300)" stroke-dasharray="1445" stroke-dashoffset="1445" style="filter:drop-shadow(0 0 6px #4FE0BE)"/><circle id="lpdash" cx="300" cy="300" r="230" fill="none" stroke="#4FE0BE" stroke-width="4" stroke-dasharray="10 16" opacity="0"/><line class="lpsp" x1="300" y1="300" x2="300.0" y2="70.0" stroke="#8DB4FF" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="518.7" y2="228.9" stroke="#F0D9A8" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="435.2" y2="486.1" stroke="#4FE0BE" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="164.8" y2="486.1" stroke="#4FE0BE" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><line class="lpsp" x1="300" y1="300" x2="81.3" y2="228.9" stroke="#FF6B57" stroke-width="2" stroke-dasharray="3 7" opacity=".18"/><circle cx="300" cy="300" r="150" fill="url(#lpglow)" id="lpglowc" opacity=".4"/><g id="lpcore"><circle cx="300" cy="300" r="84" fill="#0C1828" stroke="#4FE0BE" stroke-width="3"/><text x="300" y="300" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="40">NABD</text><text id="lpcoret" x="300" y="332" text-anchor="middle" fill="#A3B0C2" font-family="JetBrains Mono, monospace" font-size="15" letter-spacing="3">ENGINE</text></g><circle class="lppk" r="6" fill="#8DB4FF" opacity="0" style="filter:drop-shadow(0 0 6px #8DB4FF)"/><circle class="lppk" r="6" fill="#F0D9A8" opacity="0" style="filter:drop-shadow(0 0 6px #F0D9A8)"/><circle class="lppk" r="6" fill="#4FE0BE" opacity="0" style="filter:drop-shadow(0 0 6px #4FE0BE)"/><circle class="lppk" r="6" fill="#4FE0BE" opacity="0" style="filter:drop-shadow(0 0 6px #4FE0BE)"/><circle class="lppk" r="6" fill="#FF6B57" opacity="0" style="filter:drop-shadow(0 0 6px #FF6B57)"/><g class="lpn" data-x="300.0" data-y="70.0" style="transform-origin:300.0px 70.0px"><circle cx="300.0" cy="70.0" r="64" fill="#0E1B2E" stroke="#8DB4FF" stroke-width="3"/><text x="300.0" y="68.0" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Body</text><text x="300.0" y="94.0" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">wearables</text></g><g class="lpn" data-x="518.7" data-y="228.9" style="transform-origin:518.7px 228.9px"><circle cx="518.7" cy="228.9" r="64" fill="#0E1B2E" stroke="#F0D9A8" stroke-width="3"/><text x="518.7" y="226.9" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Plate</text><text x="518.7" y="252.9" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">food photo</text></g><g class="lpn" data-x="435.2" data-y="486.1" style="transform-origin:435.2px 486.1px"><circle cx="435.2" cy="486.1" r="64" fill="#0E1B2E" stroke="#4FE0BE" stroke-width="3"/><text x="435.2" y="484.1" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Gym</text><text x="435.2" y="510.1" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">check-ins</text></g><g class="lpn" data-x="164.8" data-y="486.1" style="transform-origin:164.8px 486.1px"><circle cx="164.8" cy="486.1" r="64" fill="#0E1B2E" stroke="#4FE0BE" stroke-width="3"/><text x="164.8" y="484.1" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Nudge</text><text x="164.8" y="510.1" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">via the coach</text></g><g class="lpn" data-x="81.3" data-y="228.9" style="transform-origin:81.3px 228.9px"><circle cx="81.3" cy="228.9" r="64" fill="#0E1B2E" stroke="#FF6B57" stroke-width="3"/><text x="81.3" y="226.9" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="25">Reward</text><text x="81.3" y="252.9" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="16">streaks, perks</text></g><circle id="lpcomet" r="9" fill="#fff" style="filter:drop-shadow(0 0 10px #4FE0BE)"/></svg></div>
-      <ol class="lpl" id="lpl"><li><span class="k">1</span><div><b>Body: how did she sleep and recover?</b><span>Apple Watch, Fitbit, Garmin and Samsung through Apple Health and Health Connect, plus WHOOP.</span></div></li><li><span class="k">2</span><div><b>Plate: what did she eat?</b><span>One photo. The food model knows kabsa, mandi, dates and local chains.</span></div></li><li><span class="k">3</span><div><b>Gym: what did she do?</b><span>Check-ins, classes and PT sessions from the gym's own app.</span></div></li><li><span class="k">4</span><div><b>Nudge: what should she do next?</b><span>NABD scores readiness and drop-off risk. The coach says one clear thing, in Arabic or English.</span></div></li><li><span class="k">5</span><div><b>Reward: make it stick</b><span>Streaks for sleeping and eating well, not just showing up. Free classes and partner perks.</span></div></li></ol>
+  
+      </div>
     </div>
   </div>
 </section>
 
-<!-- OMAR WIN -->
-<section class="pin" data-k="omarwin" style="--h:560vh">
+<section class="pin" data-k="oway" style="--h:720vh">
   <div class="stick">
-    <span class="eyebrow tag">Win · 12 · Omar's way in</span>
+    <span class="eyebrow tag">Win · 09 · Omar's way in</span>
+    <div class="cstack" id="cs-oway">
+      <div class="cblk " id="cb-oway-a">
+    <div class="fwrap" id="fwrap">
+      <div class="refer" id="refer">
+        <div class="avatar sa" aria-hidden="true"><span class="mono s">S</span></div>
+        <div class="avatar om" aria-hidden="true"><span class="mono o">O</span></div>
+        <div class="pcard" id="pcard"><span class="l">SARA · 12 WEEKS WITH NABD</span><b>Stronger, and still here</b><span>Protein on target 10 of 12 weeks</span><span>Strength 3 days a week</span><span class="cta">Train with me at my gym</span></div>
+        <div class="invite" id="invite"><b>Sara invited you.</b> Try NABD free and book a class together.</div>
+      </div>
+      <div class="funnel" id="funnel">
+        <div class="fst" id="fst">
+          <div class="fs" style="width:100%"><b><span class="n">01</span>Sees the gym</b><span>The only gym that knows your whole day</span></div>
+          <div class="fs" style="width:86%"><b><span class="n">02</span>Tries NABD free</b><span>Body check before joining</span></div>
+          <div class="fs" style="width:72%"><b><span class="n">03</span>Trial pass</b><span>First week planned</span></div>
+          <div class="fs" style="width:60%"><b><span class="n">04</span>Joins</b><span>Plan already running</span></div>
+          <div class="fs" style="width:60%;border-color:var(--green);background:rgba(79,224,190,.22)"><b><span class="n">05</span>Stays and invites</b><span>The NABD loop</span></div>
+          <svg class="floop" id="floop" viewBox="0 0 60 400" preserveAspectRatio="none"><path d="M10 390 C 55 390, 55 10, 10 10"/><path d="M18 4 L 8 10 L 18 16" style="stroke-dasharray:none;animation:none"/></svg>
+        </div>
+      </div>
+    </div>
+    <p class="cap" id="capFn" style="min-height:1.2em">Sara shares her progress.</p>
+  
+      </div>
+      <div class="cblk " id="cb-oway-b">
     <div class="dayg">
       <ol class="tl" id="tl2">
         <span class="fill" id="tl2fill"></span>
@@ -1084,48 +1113,23 @@ html.inend .sctl{opacity:0;pointer-events:none}
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- FUNNEL -->
-<section class="pin" data-k="funnel" style="--h:480vh">
-  <div class="stick">
-    <span class="eyebrow tag">Win · 13 · Win them, retain them</span>
-    <div class="fwrap" id="fwrap">
-      <div class="refer" id="refer">
-        <div class="avatar sa" aria-hidden="true"><span class="mono s">S</span></div>
-        <div class="avatar om" aria-hidden="true"><span class="mono o">O</span></div>
-        <div class="pcard" id="pcard"><span class="l">SARA · 12 WEEKS WITH NABD</span><b>Stronger, and still here</b><span>Protein on target 10 of 12 weeks</span><span>Strength 3 days a week</span><span class="cta">Train with me at my gym</span></div>
-        <div class="invite" id="invite"><b>Sara invited you.</b> Try NABD free and book a class together.</div>
-      </div>
-      <div class="funnel" id="funnel">
-        <div class="fst" id="fst">
-          <div class="fs" style="width:100%"><b><span class="n">01</span>Sees the gym</b><span>The only gym that knows your whole day</span></div>
-          <div class="fs" style="width:86%"><b><span class="n">02</span>Tries NABD free</b><span>Body check before joining</span></div>
-          <div class="fs" style="width:72%"><b><span class="n">03</span>Trial pass</b><span>First week planned</span></div>
-          <div class="fs" style="width:60%"><b><span class="n">04</span>Joins</b><span>Plan already running</span></div>
-          <div class="fs" style="width:60%;border-color:var(--green);background:rgba(79,224,190,.22)"><b><span class="n">05</span>Stays and invites</b><span>The NABD loop</span></div>
-          <svg class="floop" id="floop" viewBox="0 0 60 400" preserveAspectRatio="none"><path d="M10 390 C 55 390, 55 10, 10 10"/><path d="M18 4 L 8 10 L 18 16" style="stroke-dasharray:none;animation:none"/></svg>
-        </div>
+  
       </div>
     </div>
-    <p class="cap" id="capFn" style="min-height:1.2em">Sara shares her progress.</p>
   </div>
 </section>
 
-<!-- CLOSED -->
-<section class="pin" data-k="closed" style="--h:380vh">
+<section class="pin" data-k="closed" style="--h:280vh">
   <div class="stick">
-    <span class="eyebrow tag">14 · Every problem, closed</span>
+    <span class="eyebrow tag">10 · Every problem, closed</span>
     <div class="flips eight" id="flips"></div>
     <p class="closedc">Problems closed: <b id="ccount">0</b> / 8</p>
   </div>
 </section>
 
-<!-- F: RESULT -->
-<section class="pin" data-k="result" style="--h:300vh">
+<section class="pin" data-k="result" style="--h:240vh">
   <div class="stick">
-    <span class="eyebrow tag">15 · Better endings</span>
+    <span class="eyebrow tag">11 · Better endings</span>
     <div class="dual">
       <div class="dside">
         <div class="avatar" id="av2" style="width:clamp(70px,12vh,120px)" aria-hidden="true"><span class="mono s ok">S</span></div>
@@ -1150,7 +1154,6 @@ html.inend .sctl{opacity:0;pointer-events:none}
   </div>
 </section>
 
-<!-- FEATURES -->
 <section class="feat">
   <p class="eyebrow" style="text-align:center">Best of both worlds</p>
   <h2>A nutrition app's best features, <span class="g">inside the gym app.</span></h2>
@@ -1167,20 +1170,7 @@ html.inend .sctl{opacity:0;pointer-events:none}
   </div>
 </section>
 
-<!-- WINS -->
-<section class="wins">
-  <p class="eyebrow" style="text-align:center">Who wins</p>
-  <h2>Good for members, trainers <span class="g">and the gym.</span></h2>
-  <div class="wg">
-    <div class="wc"><div class="ico"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="9" r="5" fill="none" stroke="#4FE0BE" stroke-width="2.4"/><path d="M4 25c1.5-6 5.5-9 10-9s8.5 3 10 9" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round"/></svg></div><span class="who">The member</span><h3>Feels progress</h3><ul><li>One app instead of three</li><li>Simple tips in her own language</li><li>Built for Saudi food and routines</li></ul></div>
-    <div class="wc" style="transition-delay:.12s"><div class="ico"><svg width="28" height="28" viewBox="0 0 28 28"><path d="M3 20l6-6 5 4 10-10" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 8h6v6" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round"/></svg></div><span class="who">The trainer</span><h3>Sees who needs help</h3><ul><li>Early alert before a client drifts</li><li>A natural reason to offer PT sessions</li></ul></div>
-    <div class="wc" style="transition-delay:.24s"><div class="ico"><svg width="28" height="28" viewBox="0 0 28 28"><path d="M4 14h4l3-7 5 14 3-7h5" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="who">The gym</span><h3>Retain members. Win new ones.</h3><ul><li>Retention: members stay longer, and buy more PT</li><li>Acquisition: a free body check that brings people in</li><li>Referrals: members invite friends</li><li>Inside the gym's own app and brand</li></ul></div>
-  </div>
-</section>
-
-
-<!-- PHASE 2 -->
-<section class="pin" data-k="p2" style="--h:340vh">
+<section class="pin" data-k="p2" style="--h:260vh">
   <div class="stick">
     <span class="eyebrow tag">Phase 2 · What comes next</span>
     <div class="p2">
@@ -1205,15 +1195,21 @@ html.inend .sctl{opacity:0;pointer-events:none}
   </div>
 </section>
 
-<!-- FINALE -->
 <section class="fin">
   <span class="ripple"></span><span class="ripple"></span><span class="ripple"></span>
   <div class="logo">NABD<span lang="ar">نبض</span></div>
   <h2>Retain members longer. <span class="g">Win new ones faster.</span></h2>
   <p>NABD is the missing layer for gym apps: one view of each member's whole day, turned into the right action at the right moment.</p>
-  <div class="biz"><div><small>RETENTION</small><b>Members who stay</b><span>Progress they can feel, and early alerts before anyone quits.</span></div><div><small>ACQUISITION</small><b>New members, faster</b><span>A free body check and a ready plan that turn browsers into members.</span></div><div><small>REVENUE</small><b>More per member</b><span>More reasons for PT, premium tiers and referrals.</span></div></div>
+  <p class="eyebrow" style="text-align:center;margin-top:8px">Who wins</p>
+  <h3 class="winsh">Good for members, trainers <span class="g">and the gym.</span></h3>
+  <div class="wg">
+    <div class="wc"><div class="ico"><svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="9" r="5" fill="none" stroke="#4FE0BE" stroke-width="2.4"/><path d="M4 25c1.5-6 5.5-9 10-9s8.5 3 10 9" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round"/></svg></div><span class="who">The member</span><h3>Feels progress</h3><ul><li>One app instead of three</li><li>Simple tips in her own language</li><li>Built for Saudi food and routines</li></ul></div>
+    <div class="wc" style="transition-delay:.12s"><div class="ico"><svg width="28" height="28" viewBox="0 0 28 28"><path d="M3 20l6-6 5 4 10-10" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 8h6v6" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round"/></svg></div><span class="who">The trainer</span><h3>Sees who needs help</h3><ul><li>Early alert before a client drifts</li><li>A natural reason to offer PT sessions</li></ul></div>
+    <div class="wc" style="transition-delay:.24s"><div class="ico"><svg width="28" height="28" viewBox="0 0 28 28"><path d="M4 14h4l3-7 5 14 3-7h5" fill="none" stroke="#4FE0BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="who">The gym</span><h3>Retain members. Win new ones.</h3><ul><li>Retention: progress members feel, and early alerts before anyone quits</li><li>Acquisition: a free body check and a ready plan that turn browsers into members</li><li>Revenue: more PT, premium tiers and referrals from members who invite friends</li><li>Inside the gym's own app and brand</li></ul></div>
+  </div>
   <svg class="ecg2" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 H520 L540 60 L555 30 L570 90 L585 10 L605 110 L622 60 L650 60 L665 48 L680 60 H1200"/></svg>
 </section>
+
 <section class="contact" id="contact">
   <span class="eyebrow">Let's talk</span>
   <h2>Bring NABD to <span class="g">your gym app.</span></h2>
@@ -1223,6 +1219,7 @@ html.inend .sctl{opacity:0;pointer-events:none}
   </div>
   <p class="wipbox"><b>Work in progress.</b> NABD is still being built. The guidelines in this demo (ISSN, WHO, AASM) are used for illustration only. The actual product will vary, and will meet the medical and data regulations that apply.</p>
 </section>
+
 </main>
 
 <footer><b style="color:var(--ink)">Guidelines used in this demo:</b> protein 1.4–2.0 g/kg/day for exercising adults, 20–40 g a serving, spread every 3–4 hours (<a style="color:var(--green)" href="https://pubmed.ncbi.nlm.nih.gov/28642676/">ISSN Position Stand, 2017</a>); 150–300 min of moderate activity a week plus strength training on 2+ days (<a style="color:var(--green)" href="https://www.who.int/publications/i/item/9789240015128">WHO 2020 guidelines</a>); 7+ hours of sleep a night for adults (<a style="color:var(--green)" href="https://pubmed.ncbi.nlm.nih.gov/26039963/">AASM and SRS consensus, 2015</a>). HealthifyMe features are from its App Store listing. NABD gives wellness guidance, not medical advice. Members with health conditions should follow their doctor. Sara, her weight (65 kg), her day and all app screens are illustrative. Benefits describe what NABD is designed to achieve, not measured results. NABD is a work in progress: these guidelines are for this demo only, and the actual product will vary and will meet the medical and data regulations that apply.</footer>
@@ -2019,10 +2016,60 @@ html.inend .sctl{opacity:0;pointer-events:none}
     window.addEventListener('pointermove', function(e){ x = e.clientX; y = e.clientY; }, {passive: true});
     (function loop(){ requestAnimationFrame(loop); cx += (x - cx) * .12; cy += (y - cy) * .12; cur.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; })(); })();
 
-  var MOOD = {two: .3, part: 0, sara: 0, clock: 0, apps: 0, miss: 0, truth: 0, omar: 0, words: .6, build: 1, dots: 1, plan: 1, day: 1, loop: 1, omarwin: 1, funnel: 1, closed: 1, result: 1, p2: 1};
+
+  /* ---------- merged scenes: two original timelines joined by a zoom / blur / crossfade ---------- */
+  function xfade(A, B, t, zoom){
+    var e = eio(t);
+    if (A){
+      A.style.opacity = 1 - e; A.style.visibility = e > .995 ? 'hidden' : 'visible'; A.style.pointerEvents = e > .5 ? 'none' : '';
+      A.style.transform = zoom ? 'scale(' + (1 + .45 * e) + ')' : 'translateY(' + (-34 * e) + 'px) scale(' + (1 - .06 * e) + ')';
+      A.style.filter = e > .01 && e < .99 ? 'blur(' + (7 * e).toFixed(1) + 'px)' : '';
+    }
+    if (B){
+      B.style.opacity = e; B.style.visibility = e < .005 ? 'hidden' : 'visible'; B.style.pointerEvents = e < .5 ? 'none' : '';
+      B.style.transform = zoom ? 'scale(' + (.86 + .14 * e) + ')' : 'translateY(' + (34 * (1 - e)) + 'px) scale(' + (.94 + .06 * e) + ')';
+      B.style.filter = e > .01 && e < .99 ? 'blur(' + (7 * (1 - e)).toFixed(1) + 'px)' : '';
+    }
+  }
+  function introTitle(p, el){
+    var sp = el.__sp || (el.__sp = el.querySelectorAll('.pbig span')), sm = el.__sm || (el.__sm = el.querySelector('.psm')), big = el.__bg || (el.__bg = el.querySelector('.pbig'));
+    for (var i = 0; i < sp.length; i++){
+      var l = back(seg(p, .04 + i*.06, .2 + i*.06));
+      sp[i].style.opacity = cl(seg(p, .04 + i*.06, .14 + i*.06));
+      sp[i].style.transform = 'translateY(' + ((1 - l) * 0.6) + 'em) rotate(' + ((1 - l) * 10) + 'deg)';
+    }
+    big.style.transform = 'scale(' + (1 + .12 * eio(seg(p, .3, 1))) + ')';
+    sm.style.setProperty('--f', (seg(p, .35, .75) * 100) + '%');
+  }
+  var cbSA = $('cb-sara-a'), cbSB = $('cb-sara-b'), cbOA = $('cb-omar-a'), cbOB = $('cb-omar-b'),
+      cbAA = $('cb-apps-a'), cbAB = $('cb-apps-b'), cbBA = $('cb-build-a'), cbBB = $('cb-build-b'),
+      cbEA = $('cb-eng-a'), cbEB = $('cb-eng-b'), cbDA = $('cb-sday-a'), cbDB = $('cb-sday-b'), cbWA = $('cb-oway-a'), cbWB = $('cb-oway-b');
+  /* RETAIN title zooms through into Sara */
+  function saraX(p){ introTitle(seg(p, 0, .16) * .8, cbSA); xfade(cbSA, cbSB, seg(p, .16, .22), true); sara(seg(p, .22, 1)); }
+  /* WIN title zooms through into Omar */
+  function omarX(p){ introTitle(seg(p, 0, .16) * .8, cbOA); xfade(cbOA, cbOB, seg(p, .16, .22), true); omar(seg(p, .22, 1)); }
+  /* three app cards hand over to the three warning meters */
+  function appsT(p){ appsFn(seg(p, 0, .42)); xfade(cbAA, cbAB, seg(p, .42, .5)); truth(seg(p, .5, 1)); }
+  /* "What if..." question opens the six-layer build */
+  function buildX(p){ words(seg(p, 0, .14) * .95); xfade(cbBA, cbBB, seg(p, .14, .2), true); build(seg(p, .2, 1)); }
+  /* signals in / actions out, then the same engine closes the daily loop */
+  function engineX(p){ dots(seg(p, 0, .4)); xfade(cbEA, cbEB, seg(p, .4, .48)); loop(seg(p, .48, 1)); }
+  /* the week plan, then the same plan lived through one day */
+  function sdayX(p){ plan(seg(p, 0, .36)); xfade(cbDA, cbDB, seg(p, .36, .42)); day(seg(p, .42, 1)); }
+  /* Sara's invite -> Omar's five steps in -> the funnel it fills */
+  var funP = null;
+  function owayX(p){
+    var f = p < .5 ? seg(p, 0, .22) * .45 : .46 + seg(p, .77, 1) * .54;
+    funP = f; funnelFn(f, null);
+    omarwin(seg(p, .27, .72));
+    if (p < .5) xfade(cbWA, cbWB, seg(p, .22, .27)); else xfade(cbWB, cbWA, seg(p, .72, .77));
+  }
+
+  var MOOD = {two: .3, part: 0, sara: 0, clock: 0, apps: 0, miss: 0, truth: 0, omar: 0, words: .6, build: 1, dots: 1, plan: 1, day: 1, loop: 1, omarwin: 1, funnel: 1, closed: 1, result: 1, p2: 1, appsT: 0, engine: 1, sday: 1, oway: 1};
 
   /* ---------- engine ---------- */
   var H = { two: two, part: part, omar: omar, omarwin: omarwin, funnel: funnelFn, sara: sara, clock: clock, apps: appsFn, miss: miss, truth: truth, words: words, build: build, dots: dots, plan: plan, day: day, loop: loop, closed: closed, result: result, p2: p2 };
+  H.sara = saraX; H.omar = omarX; H.appsT = appsT; H.build = buildX; H.engine = engineX; H.sday = sdayX; H.oway = owayX;
   var pins = Array.prototype.slice.call(document.querySelectorAll('.pin'));
   var prog = $('prog'), ticking = false;
   var bgCanvas = $('bg'), curEl = $('cur');
@@ -2051,8 +2098,8 @@ html.inend .sctl{opacity:0;pointer-events:none}
     prog.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
   }
   function req(){ if (!ticking){ ticking = true; requestAnimationFrame(frame); } }
-  var fsec = document.querySelector('[data-k=funnel]');
-  (function fl(t){ requestAnimationFrame(fl); if (reduce) return; var r = fsec.getBoundingClientRect(); if (r.bottom < 0 || r.top > window.innerHeight) return; var total = fsec.offsetHeight - window.innerHeight; funnelFn(cl(-r.top / total), fsec, t); })(0);
+  var fsec = document.querySelector('[data-k=oway]');
+  (function fl(t){ requestAnimationFrame(fl); if (reduce || funP == null) return; var r = fsec.getBoundingClientRect(); if (r.bottom < 0 || r.top > window.innerHeight) return; funnelFn(funP, fsec, t); })(0);
 
   try { BG = initBG(); } catch(e){ BG = null; console.warn('bg', e); }
   if (!BG) bgCanvas.style.display = 'none';
@@ -2099,22 +2146,22 @@ html.inend .sctl{opacity:0;pointer-events:none}
     /* chapters: [id, selector, label, number] */
     var CH = [
       {t:'Start', c:'var(--ink)', it:[['start','.hero','NABD'],['two-problems','[data-k=two]','One gym, two problems']]},
-      {t:'Retain · the problem', c:'var(--red)', it:[['retain','.pk','Retain'],['sara','[data-k=sara]','Meet Sara','01'],['stalls','[data-k=clock]','Why she stalls','02'],['apps','[data-k=apps]',"Her apps don't talk",'03'],['protein','[data-k=miss]','The missing protein','04'],['her-week','[data-k=truth]','Her week, in numbers','05']]},
-      {t:'Win · the problem', c:'var(--sky)', it:[['win','.pw','Win'],['omar','[data-k=omar]','Meet Omar','06']]},
-      {t:'Meet NABD', c:'var(--green)', it:[['meet-nabd','[data-k=words]','Meet NABD'],['layers','[data-k=build]','Built layer by layer','07'],['dots','[data-k=dots]','Connecting the dots','08']]},
-      {t:'Retain · with NABD', c:'var(--red)', it:[['week-rebuilt','[data-k=plan]',"Sara's week, rebuilt",'09'],['sara-day','[data-k=day]',"Sara's day with NABD",'10'],['loop','[data-k=loop]','The closed loop','11']]},
-      {t:'Win · with NABD', c:'var(--sky)', it:[['omar-way-in','[data-k=omarwin]',"Omar's way in",'12'],['funnel','[data-k=funnel]','Win them, retain them','13']]},
-      {t:'The outcome', c:'var(--green)', it:[['closed','[data-k=closed]','Every problem, closed','14'],['endings','[data-k=result]','Better endings','15'],['features','.feat','Best features, inside the gym app'],['everyone','.wins','Good for members, trainers and the gym']]},
-      {t:"What's next", c:'var(--sand)', it:[['phase-2','[data-k=p2]','Phase 2'],['contact','#contact',"Let's talk"]]}
+      {t:'Retain · the problem', c:'var(--red)', it:[['sara','[data-k=sara]','Meet Sara','01'],['stalls','[data-k=clock]','Why she stalls','02'],['protein','[data-k=miss]','The missing protein','03'],['apps','[data-k=appsT]','Three apps, three warnings','04']]},
+      {t:'Win · the problem', c:'var(--sky)', it:[['omar','[data-k=omar]','Meet Omar','05']]},
+      {t:'Meet NABD', c:'var(--green)', it:[['layers','[data-k=build]','Six layers, one app','06'],['engine','[data-k=engine]','The engine','07']]},
+      {t:'With NABD', c:'var(--green)', it:[['sara-day','[data-k=sday]',"Sara's day with NABD",'08'],['omar-way-in','[data-k=oway]',"Omar's way in",'09']]},
+      {t:'The outcome', c:'var(--green)', it:[['closed','[data-k=closed]','Every problem, closed','10'],['endings','[data-k=result]','Better endings','11'],['features','.feat','Best features, inside the gym app']]},
+      {t:"What's next", c:'var(--sand)', it:[['phase-2','[data-k=p2]','Phase 2'],['finale','.fin','Who wins'],['contact','#contact',"Let's talk"]]}
     ];
     /* slide steps: scene progress values where each click lands (taken from each scene's own timings).
        Parts without steps (features onwards, incl. Phase 2) stay a normal scrolling page in both modes. */
     var STOPS = {
-      'start':[0], 'two-problems':[.42,.78,1], 'retain':[1], 'sara':[.4,.82,1], 'stalls':[0,.89,1],
-      'apps':[.29,.61,1], 'protein':[.19,.49,.61,.81,1], 'her-week':[.3,.52,.76,1], 'win':[1],
-      'omar':[.12,.39,.59,.79,1], 'meet-nabd':[1], 'layers':[.1,.27,.38,.49,.6,.73,1], 'dots':[.39,.69,1],
-      'week-rebuilt':[.47,1], 'sara-day':[.19,.39,.59,.79,1], 'loop':[.21,.37,.53,.7,1],
-      'omar-way-in':[.19,.39,.59,.79,1], 'funnel':[.33,.49,.83,1], 'closed':[0,1], 'endings':[.31,.79,1]
+      'start':[0], 'two-problems':[.42,.78,1],
+      'sara':[.16,.532,.86,1], 'stalls':[.89,1], 'protein':[.19,.49,.81,1], 'apps':[.122,.256,.88,1],
+      'omar':[.16,.524,.836,1],
+      'layers':[.14,.504,1], 'engine':[.156,.4,.672,.844,1],
+      'sara-day':[.169,.36,.53,.646,.762,.878,1], 'omar-way-in':[.161,.22,.356,.446,.536,.626,.72,.928,1],
+      'closed':[0,1], 'endings':[.31,.79,1]
     };
 
     var btn = $('tocbtn'), panel = $('tocp'), cur = $('toccur'), dot = $('tocdot'), veil = $('veil'), ticks = $('ticks');
@@ -2324,8 +2371,8 @@ html.inend .sctl{opacity:0;pointer-events:none}
       try { localStorage.setItem('nabd-mode', m); } catch(e){}
       if (hint) hint.textContent = m === 'slides' ? (fine ? 'Click or press → to begin' : 'Tap or swipe to begin') : hintTxt;
       keys.innerHTML = m === 'slides'
-        ? '<kbd>&rarr;</kbd> / click next step &nbsp; <kbd>&larr;</kbd> back<br><kbd>Shift</kbd>+<kbd>&rarr;</kbd> skip to next part &nbsp; <kbd>1</kbd>&ndash;<kbd>8</kbd> chapters<br><kbd>P</kbd> play / pause &nbsp; <kbd>R</kbd> replay part &nbsp; <kbd>M</kbd> menu'
-        : '<kbd>&larr;</kbd> <kbd>&rarr;</kbd> previous / next part &nbsp; <kbd>1</kbd>&ndash;<kbd>8</kbd> chapters<br><kbd>M</kbd> this menu &nbsp; <kbd>Esc</kbd> close';
+        ? '<kbd>&rarr;</kbd> / click next step &nbsp; <kbd>&larr;</kbd> back<br><kbd>Shift</kbd>+<kbd>&rarr;</kbd> skip to next part &nbsp; <kbd>1</kbd>&ndash;<kbd>7</kbd> chapters<br><kbd>P</kbd> play / pause &nbsp; <kbd>R</kbd> replay part &nbsp; <kbd>M</kbd> menu'
+        : '<kbd>&larr;</kbd> <kbd>&rarr;</kbd> previous / next part &nbsp; <kbd>1</kbd>&ndash;<kbd>7</kbd> chapters<br><kbd>M</kbd> this menu &nbsp; <kbd>Esc</kbd> close';
       if (m === 'scroll'){ if (typeof setPlaying === 'function' && playing) setPlaying(false); lock(false); return; }
       /* entering slides: continue from wherever the reader is */
       if (freeEl && window.scrollY >= top(freeEl) - window.innerHeight * .5){ lock(false); paintCtl(); return; }
@@ -2366,7 +2413,7 @@ html.inend .sctl{opacity:0;pointer-events:none}
       if (key === 'm' || key === 'M'){ e.preventDefault(); open(panel.hidden); return; }
       if ((key === 'p' || key === 'P') && panel.hidden){ e.preventDefault(); setPlaying(!playing); return; }
       if ((key === 'r' || key === 'R') && panel.hidden && mode === 'slides'){ e.preventDefault(); replay(); return; }
-      if (/^[1-8]$/.test(key)){ var ch = CH[+key - 1]; if (ch && ch.first){ e.preventDefault(); go(ch.first); } return; }
+      if (/^[1-7]$/.test(key)){ var ch = CH[+key - 1]; if (ch && ch.first){ e.preventDefault(); go(ch.first); } return; }
       if (!panel.hidden) return;
       if (mode === 'slides'){
         var nextK = key === 'ArrowRight' || key === 'PageDown' || key === 'Enter' || (key === ' ' && !e.shiftKey) || (key === 'ArrowDown' && !free);
