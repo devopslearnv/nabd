@@ -356,21 +356,23 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 .snap{max-width:1180px;margin:0 auto;padding:clamp(80px,12vh,140px) 16px 20px}
 .snap h2{font-size:clamp(30px,4.6vw,54px);line-height:1.04;text-align:center;margin:14px auto;max-width:22ch}
 .snap .intro{text-align:center;color:var(--muted);max-width:58ch;margin:0 auto 38px;font-size:clamp(16px,1.9vw,19px)}
-.sgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,26px);align-items:start}
+.sgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,32px);align-items:stretch;max-width:1080px;margin:0 auto}
 .scol{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0}
 .scol>.lbl{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
 .scol>.lbl i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--c);color:#05060A;display:inline-flex;align-items:center;justify-content:center;font-weight:700;letter-spacing:0}
 .scol.in>.lbl i{animation:nring 2s ease-out 1}
 @keyframes nring{0%{box-shadow:0 0 0 0 rgba(255,255,255,.35)}100%{box-shadow:0 0 0 16px rgba(255,255,255,0)}}
-.dev{width:min(340px,100%);border-radius:40px;padding:11px;background:linear-gradient(160deg,#1A2A42,#0A1220);border:1.5px solid #2A3E5C;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 6px rgba(255,255,255,.02)}
-.scr{border-radius:30px;overflow:hidden;background:#0B1422;position:relative}
+.scol>.dev{flex:1}
+.dev{width:min(340px,100%);min-height:660px;display:flex;border-radius:40px;padding:11px;background:linear-gradient(160deg,#1A2A42,#0A1220);border:1.5px solid #2A3E5C;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 6px rgba(255,255,255,.02)}
+.scr{flex:1;display:flex;flex-direction:column;border-radius:30px;overflow:hidden;background:#0B1422;position:relative}
+.sbody{flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:6px 12px 14px}
 .sbar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px 6px;font:600 12px var(--mono);color:var(--muted)}
 .sbar b{font-family:var(--display);font-size:15px;color:var(--ink);letter-spacing:.02em}.sbar b i{font-style:normal;color:var(--green)}
 /* food */
-.shot{position:relative;margin:4px 10px 0;border-radius:22px;overflow:hidden;aspect-ratio:6/5;background:#140D07}
+.shot{position:relative;border-radius:22px;overflow:hidden;flex:1 1 auto;min-height:220px;background:#EDEBE6}
+.sbody.food{justify-content:flex-start;gap:12px}
 .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18);filter:saturate(.8) brightness(.8)}
 .scol.in .shot img{transition:transform 1.4s cubic-bezier(.2,.8,.2,1),filter .3s ease 1.25s;transform:scale(1);filter:saturate(1.1) brightness(1)}
-.shot:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 62% 66% at 50% 50%,transparent 70%,rgba(5,6,10,.78) 100%);pointer-events:none}
 .shot>i,.shot>span{z-index:2}
 .corner{position:absolute;width:26px;height:26px;border:3px solid #fff;opacity:.9;transition:all .5s ease}
 .corner.a{left:22px;top:22px;border-right:0;border-bottom:0;border-radius:10px 0 0 0}.corner.b{right:22px;top:22px;border-left:0;border-bottom:0;border-radius:0 10px 0 0}
@@ -390,12 +392,13 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 .scol.in .tagf{animation:npop .4s cubic-bezier(.3,1.6,.5,1) both}
 .scol.in .tagf:nth-of-type(1){animation-delay:3.2s}.scol.in .tagf:nth-of-type(2){animation-delay:3.35s}.scol.in .tagf:nth-of-type(3){animation-delay:3.5s}.scol.in .tagf:nth-of-type(4){animation-delay:3.65s}
 @keyframes npop{to{opacity:1;transform:none}}
-.sheet{padding:12px 14px 16px;opacity:0;transform:translateY(30px)}
+.sheet{display:flex;flex-direction:column;gap:9px;opacity:0;transform:translateY(30px)}
 .scol.in .sheet{animation:nup .6s ease 3.8s both}
 @keyframes nup{to{opacity:1;transform:none}}
 .sh1{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .sh1 .dn{font:700 16px var(--display)}.sh1 .dn small{display:block;font:500 12px var(--body);color:var(--muted)}
-.kcal{display:flex;align-items:center;gap:10px;margin:10px 0;padding:10px 14px;border-radius:18px;background:#121F33}
+.kday{margin-left:auto;text-align:right;font-size:11px;line-height:1.35;color:var(--muted)}
+.kcal{display:flex;align-items:center;gap:10px;margin:0;padding:10px 14px;border-radius:18px;background:#121F33}
 .kcal .fl{width:34px;height:34px;border-radius:50%;background:rgba(255,107,87,.15);display:flex;align-items:center;justify-content:center}
 .kcal .n{font:800 32px/1 var(--display)}.kcal .u{font-size:12px;color:var(--muted)}
 .macros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -404,7 +407,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 .mac .ring{transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1) 4.1s}
 .scol.in .mac .ring{stroke-dashoffset:var(--o)}
 .mac b{display:block;font:700 15px var(--display)}.mac span{font-size:11px;color:var(--muted)}
-.hsc{margin-top:8px;padding:9px 12px;border-radius:16px;background:#121F33;font-size:12px;color:var(--muted)}
+.hsc{margin-top:0;padding:9px 12px;border-radius:16px;background:#121F33;font-size:12px;color:var(--muted)}
 .hsc .top{display:flex;justify-content:space-between;margin-bottom:6px}.hsc .top b{color:var(--ink)}
 .hsc .bar{height:7px;border-radius:7px;background:rgba(255,255,255,.08);overflow:hidden}
 .hsc .bar i{display:block;height:100%;width:0;border-radius:7px;background:linear-gradient(90deg,var(--sand),var(--green));transition:width 1.2s ease 4.4s}
@@ -412,13 +415,16 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 .rp{flex:0 0 auto;font:700 10.5px var(--mono);letter-spacing:.06em;padding:3px 8px;border-radius:999px}
 .rp.w{background:rgba(240,217,168,.15);color:var(--sand)}.rp.r{background:rgba(255,107,87,.15);color:var(--red)}.rp.ok{background:rgba(79,224,190,.15);color:var(--green)}
 /* watch */
-.wcard{width:min(340px,100%);display:flex;flex-direction:column;align-items:center;gap:12px}
-.watch{width:150px}
+.whero{display:flex;align-items:center;gap:14px;padding:10px 14px;border-radius:18px;background:#121F33}
+.watch{width:74px;flex:0 0 auto}
+.wmeta{display:flex;flex-direction:column;gap:2px;min-width:0}
+.wmeta b{font:800 30px/1.05 var(--display)}.wmeta b small{font:500 13px var(--body);color:var(--muted)}
+.srcl{font-size:10.5px;line-height:1.35;color:var(--muted)}
 .watch .hb{transform-origin:100px 118px;animation:beat 1s ease-in-out infinite}
 .ecg{stroke-dasharray:420;stroke-dashoffset:420;animation:necg 2s linear infinite}
 @keyframes necg{to{stroke-dashoffset:0}}
-.dash{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.wt{padding:11px 12px;border-radius:18px;background:var(--card);border:1px solid var(--line);opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
+.dash{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.wt{padding:10px 12px;border-radius:16px;background:#121F33;border:1px solid var(--line);opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
 .scol.in .wt{opacity:1;transform:none}
 .scol.in .wt:nth-child(2){transition-delay:.15s}.scol.in .wt:nth-child(3){transition-delay:.3s}.scol.in .wt:nth-child(4){transition-delay:.45s}.scol.in .wt:nth-child(5){transition-delay:.6s}
 .wt .k{font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -443,6 +449,13 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 .gshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12)}
 .scol.in .gshot img{transition:transform 6s ease-out;transform:scale(1)}
 .gshot:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,10,0) 35%,rgba(5,6,10,.85))}
+.gtop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.gwk{text-align:right}.wdots{display:flex;gap:5px;margin-top:5px}
+.wdots i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.1)}.wdots i.on{background:var(--green)}.wdots i.now{background:transparent;border:2px solid var(--green);animation:nblink 1.2s steps(2) infinite}
+.gstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gstats div{padding:9px 6px;border-radius:14px;background:#121F33;text-align:center}
+.gstats b .cnt{font:inherit;color:inherit;opacity:1}
+.gstats b{display:block;font:800 19px/1.1 var(--display)}.gstats b small{font:500 11px var(--body);color:var(--muted)}.gstats span{font-size:11px;color:var(--muted)}
 .gbadge{align-self:flex-start;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--green);color:var(--on-green);font:700 12px var(--body);opacity:0;transform:translateY(10px)}
 .scol.in .gbadge{animation:nup .5s ease .5s both}
 .gbody{padding:12px 14px 16px;display:flex;flex-direction:column;gap:9px}
@@ -464,7 +477,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 .exl{display:flex;flex-direction:column;gap:6px}
 .exl div{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:7px 10px;border-radius:12px;background:#121F33;opacity:0;transform:translateX(16px);transition:opacity .4s,transform .4s}
 .scol.in .exl div{opacity:1;transform:none}
-.scol.in .exl div:nth-child(1){transition-delay:1.3s}.scol.in .exl div:nth-child(2){transition-delay:1.5s}.scol.in .exl div:nth-child(3){transition-delay:1.7s}
+.scol.in .exl div:nth-of-type(1){transition-delay:1.3s}.scol.in .exl div:nth-of-type(2){transition-delay:1.5s}.scol.in .exl div:nth-of-type(3){transition-delay:1.7s}
 .exl div span{color:var(--muted);font:600 11px var(--mono)}
 .exl div.dn span{color:var(--green)}
 .gnext{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;border-radius:16px;border:1px dashed rgba(255,107,87,.5);background:rgba(255,107,87,.07);font-size:13px;opacity:0;transition:opacity .5s 2.1s}
@@ -495,7 +508,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 .pbtn2{display:inline-block;margin-top:12px;padding:10px 18px;border-radius:999px;background:var(--green);color:var(--on-green);font-weight:700;font-size:14px;opacity:0;transition:opacity .4s 2.9s}
 .hub.in .pbtn2{opacity:1}
 @media (max-width:1020px){.sgrid{grid-template-columns:minmax(0,1fr);gap:46px;max-width:420px;margin:0 auto}}
-@media (max-width:420px){.wt{padding:10px}.wt .v{font-size:20px}.watch{width:130px}.plan{padding:14px}.pl{font-size:13px}}
+@media (max-width:420px){.wt .v{font-size:20px}.plan{padding:14px}.pl{font-size:13px}.dev{min-height:0}}
 
 /* phase 2 · heart */
 .p2s{max-width:1120px;margin:0 auto;padding:clamp(80px,12vh,140px) 16px 40px;display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3.4vh,34px);text-align:center}
@@ -1365,67 +1378,72 @@ html.inend .sctl{opacity:0;pointer-events:none}
     <div class="scol" style="--c:var(--sand)">
       <span class="lbl"><i>1</i>Food · one photo</span>
       <div class="dev"><div class="scr">
-        <div class="sbar"><b>Your gym app</b><span>1:42 pm · Lunch</span></div>
-        <div class="shot">
-          <img src="img/kabsa.jpg" alt="Photo of a plate of chicken kabsa" width="720" height="600" loading="lazy" decoding="async">
-          <i class="corner a"></i><i class="corner b"></i><i class="corner c"></i><i class="corner d"></i>
-          <i class="flash"></i><i class="scanl"></i><i class="shut"></i>
-          <span class="tagf" style="left:52%;top:46%">Chicken</span>
-          <span class="tagf" style="left:24%;top:69%">Green chili</span>
-          <span class="tagf" style="left:50%;top:19%">Almonds &amp; pistachios</span>
-          <span class="tagf" style="left:56%;top:84%">Basmati rice</span>
-        </div>
-        <div class="sheet">
-          <div class="sh1"><div class="dn">Chicken kabsa<small>1 plate · about 420 g</small></div><span class="rp ok">98% match</span></div>
-          <div class="kcal"><span class="fl"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M9 1c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-4 2-6 1 1 2 2 2 3 1-3 2-5 2-8z" fill="#FF6B57"/></svg></span><div><div class="n"><span class="cnt" data-to="612">0</span></div><span class="u">calories</span></div></div>
-          <div class="macros">
-            <div class="mac"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle class="ring" cx="23" cy="23" r="18" fill="none" stroke="#FF6B57" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="113" style="--o:42" transform="rotate(-90 23 23)"/></svg><b><span class="cnt" data-to="38">0</span> g</b><span>Protein</span></div>
-            <div class="mac"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle class="ring" cx="23" cy="23" r="18" fill="none" stroke="#F0D9A8" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="113" style="--o:28" transform="rotate(-90 23 23)"/></svg><b><span class="cnt" data-to="72">0</span> g</b><span>Carbs</span></div>
-            <div class="mac"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle class="ring" cx="23" cy="23" r="18" fill="none" stroke="#8DB4FF" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="113" style="--o:64" transform="rotate(-90 23 23)"/></svg><b><span class="cnt" data-to="18">0</span> g</b><span>Fat</span></div>
+        <div class="sbar"><b>NAB<i>D</i></b><span>1:42 pm · Lunch</span></div>
+        <div class="sbody food">
+          <div class="shot">
+            <img src="img/shawarma.jpg" alt="Photo of a grilled chicken shawarma wrap on a plate" width="800" height="600" loading="lazy" decoding="async">
+            <i class="corner a"></i><i class="corner b"></i><i class="corner c"></i><i class="corner d"></i>
+            <i class="flash"></i><i class="scanl"></i><i class="shut"></i>
+            <span class="tagf" style="left:24%;top:18%">Saj bread</span>
+            <span class="tagf" style="left:54%;top:58%">Chicken</span>
+            <span class="tagf" style="left:6%;top:62%">Garlic sauce</span>
+            <span class="tagf" style="left:30%;top:80%">Tomato &amp; pickles</span>
           </div>
-          <div class="hsc"><div class="top"><span>Health score</span><b>7 / 10</b></div><div class="bar"><i></i></div></div>
+          <div class="sheet">
+            <div class="sh1"><div class="dn">Chicken shawarma<small>1 wrap · about 300 g</small></div><span class="rp ok">97% match</span></div>
+            <div class="kcal"><span class="fl"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M9 1c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-4 2-6 1 1 2 2 2 3 1-3 2-5 2-8z" fill="#FF6B57"/></svg></span><div><div class="n"><span class="cnt" data-to="520">0</span></div><span class="u">calories</span></div><span class="kday">1,240 of 1,900<br>today</span></div>
+            <div class="macros">
+              <div class="mac"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle class="ring" cx="23" cy="23" r="18" fill="none" stroke="#FF6B57" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="113" style="--o:50" transform="rotate(-90 23 23)"/></svg><b><span class="cnt" data-to="32">0</span> g</b><span>Protein</span></div>
+              <div class="mac"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle class="ring" cx="23" cy="23" r="18" fill="none" stroke="#F0D9A8" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="113" style="--o:40" transform="rotate(-90 23 23)"/></svg><b><span class="cnt" data-to="48">0</span> g</b><span>Carbs</span></div>
+              <div class="mac"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle class="ring" cx="23" cy="23" r="18" fill="none" stroke="#8DB4FF" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="113" style="--o:48" transform="rotate(-90 23 23)"/></svg><b><span class="cnt" data-to="22">0</span> g</b><span>Fat</span></div>
+            </div>
+            <div class="hsc"><div class="top"><span>Health score</span><b>6 / 10</b></div><div class="bar"><i></i></div></div>
+          </div>
         </div>
       </div></div>
     </div>
 
     <div class="scol" style="--c:var(--sky)">
       <span class="lbl"><i>2</i>Body · the watch</span>
-      <div class="wcard">
-        <svg class="watch" viewBox="0 0 200 290" aria-label="Smartwatch showing heart rate 72">
-          <defs><linearGradient id="wst" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1C2738"/><stop offset="1" stop-color="#0E1520"/></linearGradient></defs>
-          <rect x="52" y="0" width="96" height="70" rx="14" fill="url(#wst)"/><rect x="52" y="220" width="96" height="70" rx="14" fill="url(#wst)"/>
-          <rect x="22" y="40" width="156" height="200" rx="44" fill="#2A3548" stroke="#3E4C64" stroke-width="2"/>
-          <rect x="176" y="96" width="9" height="30" rx="4" fill="#3E4C64"/>
-          <rect x="32" y="50" width="136" height="180" rx="36" fill="#03060B"/>
-          <text x="100" y="80" text-anchor="middle" fill="#A3B0C2" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2">HEART</text>
-          <path class="hb" d="M100 132c-14-10-24-18-24-28a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 10-10 18-24 28z" fill="#FF6B57" style="filter:drop-shadow(0 0 8px rgba(255,107,87,.7))"/>
-          <text x="100" y="170" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="34">72</text>
-          <text x="100" y="186" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="11">BPM · resting 66</text>
-          <path class="ecg" d="M42 206h30l5-10 6 22 6-30 6 26 4-8h59" fill="none" stroke="#4FE0BE" stroke-width="2.2" stroke-linejoin="round"/>
-        </svg>
-        <div class="dash">
-          <div class="wt"><span class="k">Resting heart</span><div class="v">66 <small>bpm</small></div><span class="d r">↑ 8 this week</span>
-            <svg viewBox="0 0 120 46" preserveAspectRatio="none"><path class="ln" d="M2 38 L20 36 L38 34 L56 30 L74 24 L92 18 L118 10" fill="none" stroke="#FF6B57" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></div>
-          <div class="wt"><span class="k">HRV</span><div class="v">31 <small>ms</small></div><span class="d r">↓ below normal</span>
-            <svg viewBox="0 0 120 46" preserveAspectRatio="none"><g fill="#8DB4FF"><rect class="wbar" x="2" y="8" width="12" height="38" rx="3"/><rect class="wbar" x="19" y="12" width="12" height="34" rx="3" style="transition-delay:.1s"/><rect class="wbar" x="36" y="10" width="12" height="36" rx="3" style="transition-delay:.2s"/><rect class="wbar" x="53" y="18" width="12" height="28" rx="3" style="transition-delay:.3s"/><rect class="wbar" x="70" y="22" width="12" height="24" rx="3" style="transition-delay:.4s"/><rect class="wbar" x="87" y="26" width="12" height="20" rx="3" style="transition-delay:.5s"/><rect class="wbar" x="104" y="30" width="12" height="16" rx="3" fill="#FF6B57" style="transition-delay:.6s"/></g></svg></div>
-          <div class="wt wide"><span class="k">Sleep last night</span><div class="v">5h 10m <small>· goal 7h+</small></div>
-            <div class="hyp"><i style="flex:2;background:#8DB4FF;transition-delay:.6s"></i><i style="flex:3;background:#3E6FD8;transition-delay:.75s"></i><i style="flex:1.2;background:#B48DFF;transition-delay:.9s"></i><i style="flex:.6;background:#FF6B57;transition-delay:1.05s"></i><i style="flex:2.4;background:#8DB4FF;transition-delay:1.2s"></i><i style="flex:1;background:#B48DFF;transition-delay:1.35s"></i></div>
-            <div class="hleg"><span style="--c:#8DB4FF">Light</span><span style="--c:#3E6FD8">Deep</span><span style="--c:#B48DFF">REM</span><span style="--c:#FF6B57">Awake</span></div></div>
-          <div class="wt"><span class="k">Steps</span><div class="v"><span class="cnt" data-to="4200" data-fmt="1">0</span></div><span class="d" style="color:var(--muted)">of 8,000</span>
-            <svg viewBox="0 0 120 46" preserveAspectRatio="none"><rect x="2" y="18" width="116" height="10" rx="5" fill="rgba(255,255,255,.08)"/><rect class="hbx" x="2" y="18" width="61" height="10" rx="5" fill="#4FE0BE" style="transition-delay:.7s"/></svg></div>
-          <div class="wt"><span class="k">Water</span><div class="v">1.4 <small>of 3 L</small></div><span class="d" style="color:var(--sand)">Hot day</span>
-            <svg viewBox="0 0 120 46" preserveAspectRatio="none"><g fill="#8DB4FF"><rect class="wbar" x="4" y="14" width="18" height="30" rx="5" style="transition-delay:.8s"/><rect class="wbar" x="28" y="14" width="18" height="30" rx="5" style="transition-delay:.9s"/><rect class="wbar" x="52" y="14" width="18" height="30" rx="5" style="transition-delay:1s"/></g><g fill="rgba(255,255,255,.08)"><rect x="76" y="14" width="18" height="30" rx="5"/><rect x="100" y="14" width="18" height="30" rx="5"/></g></svg></div>
+      <div class="dev"><div class="scr">
+        <div class="sbar"><b>Your gym app</b><span>7:05 am · Synced</span></div>
+        <div class="sbody">
+          <div class="whero">
+            <svg class="watch" viewBox="0 0 200 290" aria-label="Smartwatch showing heart rate 72">
+              <defs><linearGradient id="wst" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1C2738"/><stop offset="1" stop-color="#0E1520"/></linearGradient></defs>
+              <rect x="52" y="0" width="96" height="70" rx="14" fill="url(#wst)"/><rect x="52" y="220" width="96" height="70" rx="14" fill="url(#wst)"/>
+              <rect x="22" y="40" width="156" height="200" rx="44" fill="#2A3548" stroke="#3E4C64" stroke-width="2"/>
+              <rect x="176" y="96" width="9" height="30" rx="4" fill="#3E4C64"/>
+              <rect x="32" y="50" width="136" height="180" rx="36" fill="#03060B"/>
+              <path class="hb" d="M100 128c-14-10-24-18-24-28a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 10-10 18-24 28z" fill="#FF6B57" style="filter:drop-shadow(0 0 8px rgba(255,107,87,.7))"/>
+              <text x="100" y="170" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="36">72</text>
+              <path class="ecg" d="M42 200h30l5-10 6 22 6-30 6 26 4-8h59" fill="none" stroke="#4FE0BE" stroke-width="2.2" stroke-linejoin="round"/>
+            </svg>
+            <div class="wmeta"><span class="gk">Heart now</span><b>72 <small>bpm</small></b><span class="srcl">Apple Watch · Fitbit · Garmin · Samsung · WHOOP</span></div>
+          </div>
+          <div class="dash">
+            <div class="wt"><span class="k">Resting heart</span><div class="v">66 <small>bpm</small></div><span class="d r">↑ 8 this week</span>
+              <svg viewBox="0 0 120 46" preserveAspectRatio="none"><path class="ln" d="M2 38 L20 36 L38 34 L56 30 L74 24 L92 18 L118 10" fill="none" stroke="#FF6B57" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></div>
+            <div class="wt"><span class="k">HRV</span><div class="v">31 <small>ms</small></div><span class="d r">↓ below normal</span>
+              <svg viewBox="0 0 120 46" preserveAspectRatio="none"><g fill="#8DB4FF"><rect class="wbar" x="2" y="8" width="12" height="38" rx="3"/><rect class="wbar" x="19" y="12" width="12" height="34" rx="3" style="transition-delay:.1s"/><rect class="wbar" x="36" y="10" width="12" height="36" rx="3" style="transition-delay:.2s"/><rect class="wbar" x="53" y="18" width="12" height="28" rx="3" style="transition-delay:.3s"/><rect class="wbar" x="70" y="22" width="12" height="24" rx="3" style="transition-delay:.4s"/><rect class="wbar" x="87" y="26" width="12" height="20" rx="3" style="transition-delay:.5s"/><rect class="wbar" x="104" y="30" width="12" height="16" rx="3" fill="#FF6B57" style="transition-delay:.6s"/></g></svg></div>
+            <div class="wt wide"><span class="k">Sleep last night</span><div class="v">5h 10m <small>· goal 7h+</small></div>
+              <div class="hyp"><i style="flex:2;background:#8DB4FF;transition-delay:.6s"></i><i style="flex:3;background:#3E6FD8;transition-delay:.75s"></i><i style="flex:1.2;background:#B48DFF;transition-delay:.9s"></i><i style="flex:.6;background:#FF6B57;transition-delay:1.05s"></i><i style="flex:2.4;background:#8DB4FF;transition-delay:1.2s"></i><i style="flex:1;background:#B48DFF;transition-delay:1.35s"></i></div>
+              <div class="hleg"><span style="--c:#8DB4FF">Light</span><span style="--c:#3E6FD8">Deep</span><span style="--c:#B48DFF">REM</span><span style="--c:#FF6B57">Awake</span></div></div>
+            <div class="wt"><span class="k">Steps</span><div class="v"><span class="cnt" data-to="4200" data-fmt="1">0</span></div><span class="d" style="color:var(--muted)">of 8,000</span>
+              <svg viewBox="0 0 120 46" preserveAspectRatio="none"><rect x="2" y="18" width="116" height="10" rx="5" fill="rgba(255,255,255,.08)"/><rect class="hbx" x="2" y="18" width="61" height="10" rx="5" fill="#4FE0BE" style="transition-delay:.7s"/></svg></div>
+            <div class="wt"><span class="k">Water</span><div class="v">1.4 <small>of 3 L</small></div><span class="d" style="color:var(--sand)">Hot day</span>
+              <svg viewBox="0 0 120 46" preserveAspectRatio="none"><g fill="#8DB4FF"><rect class="wbar" x="4" y="14" width="18" height="30" rx="5" style="transition-delay:.8s"/><rect class="wbar" x="28" y="14" width="18" height="30" rx="5" style="transition-delay:.9s"/><rect class="wbar" x="52" y="14" width="18" height="30" rx="5" style="transition-delay:1s"/></g><g fill="rgba(255,255,255,.08)"><rect x="76" y="14" width="18" height="30" rx="5"/><rect x="100" y="14" width="18" height="30" rx="5"/></g></svg></div>
+          </div>
         </div>
-        <div class="srcs"><span>Apple Watch</span><span>Fitbit</span><span>Garmin</span><span>Samsung</span><span>WHOOP</span></div>
-      </div>
+      </div></div>
     </div>
 
     <div class="scol" style="--c:var(--green)">
       <span class="lbl"><i>3</i>Training · the gym</span>
       <div class="dev"><div class="scr">
         <div class="sbar"><b>Your gym app</b><span>6:12 pm · Gym floor</span></div>
-<div class="gbody">
-          <span class="gbadge">✓ Checked in · 6:12 pm</span>
+        <div class="sbody">
+          <div class="gtop"><span class="gbadge">✓ Checked in</span><div class="gwk"><span class="gk">This week</span><div class="wdots"><i class="on"></i><i></i><i class="on"></i><i class="on"></i><i class="now"></i><i></i><i></i></div></div></div>
           <div class="live2">
             <div class="row2">
               <div class="rep"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="6"/><circle class="rr" id="reprr" cx="32" cy="32" r="27" fill="none" stroke="#4FE0BE" stroke-width="6" stroke-linecap="round" stroke-dasharray="170" stroke-dashoffset="170"/></svg><b><span id="repn">0</span><small>OF 8</small></b></div>
@@ -1433,10 +1451,11 @@ html.inend .sctl{opacity:0;pointer-events:none}
               <span class="rp ok">LIVE</span>
             </div>
             <div class="zone"><i style="background:#3E6FD8"></i><i style="background:#4FE0BE"></i><i style="background:#F0D9A8"></i><i style="background:#FF9A57"></i><i style="background:#FF6B57"></i><em></em></div>
-            <div class="zl"><span>Heart zone · from the watch</span><b>Zone 4 · 158 bpm</b></div>
+            <div class="zl"><span>Heart zone · from the watch</span><b>Zone 4 · 158</b></div>
           </div>
-          <span class="gk">Today's workout</span>
+          <div class="gstats"><div><b><span class="cnt" data-to="410">0</span></b><span>kcal burned</span></div><div><b>42<small> min</small></b><span>active</span></div><div><b>3</b><span>visits</span></div></div>
           <div class="exl">
+            <span class="gk">Today's workout</span>
             <div class="dn">Leg press<span>3 × 10 ✓</span></div>
             <div class="dn">Seated row<span>3 × 10 ✓</span></div>
             <div>Goblet squat<span>set 3 …</span></div>
@@ -1474,7 +1493,7 @@ html.inend .sctl{opacity:0;pointer-events:none}
     </svg>
     <div class="plan">
       <div class="pt"><b>Sara's plan for today</b><span>CONNECTED</span></div>
-      <div class="pl"><i style="--c:var(--sand)">1</i><div><b>38 g protein at lunch, 63 of 100 g today.</b> <span>Laban and dates at 4 pm adds 15 g.</span></div></div>
+      <div class="pl"><i style="--c:var(--sand)">1</i><div><b>32 g protein at lunch, 57 of 100 g today.</b> <span>Laban and dates at 4 pm adds 15 g.</span></div></div>
       <div class="pl"><i style="--c:var(--sky)">2</i><div><b>Slept 5h 10m, resting heart up 8.</b> <span>Her body needs an easier session.</span></div></div>
       <div class="pl"><i style="--c:var(--green)">3</i><div><b>Swap GRIT at 7 pm for Pilates, same slot.</b> <span>Keeps her streak, protects recovery.</span></div></div>
       <span class="pbtn2">Swap to Pilates</span>
@@ -1585,7 +1604,7 @@ html.inend .sctl{opacity:0;pointer-events:none}
 
 </main>
 
-<footer><b style="color:var(--ink)">Guidelines used in this demo:</b> protein 1.4–2.0 g/kg/day for exercising adults, 20–40 g a serving, spread every 3–4 hours (<a style="color:var(--green)" href="https://pubmed.ncbi.nlm.nih.gov/28642676/">ISSN Position Stand, 2017</a>); 150–300 min of moderate activity a week plus strength training on 2+ days (<a style="color:var(--green)" href="https://www.who.int/publications/i/item/9789240015128">WHO 2020 guidelines</a>); 7+ hours of sleep a night for adults (<a style="color:var(--green)" href="https://pubmed.ncbi.nlm.nih.gov/26039963/">AASM and SRS consensus, 2015</a>). HealthifyMe features are from its App Store listing. NABD gives wellness guidance, not medical advice. Members with health conditions should follow their doctor. Sara, her weight (65 kg), her day and all app screens are illustrative. Benefits describe what NABD is designed to achieve, not measured results. NABD is a work in progress: these guidelines are for this demo only, and the actual product will vary and will meet the medical and data regulations that apply.</footer>
+<footer><b style="color:var(--ink)">Guidelines used in this demo:</b> protein 1.4–2.0 g/kg/day for exercising adults, 20–40 g a serving, spread every 3–4 hours (<a style="color:var(--green)" href="https://pubmed.ncbi.nlm.nih.gov/28642676/">ISSN Position Stand, 2017</a>); 150–300 min of moderate activity a week plus strength training on 2+ days (<a style="color:var(--green)" href="https://www.who.int/publications/i/item/9789240015128">WHO 2020 guidelines</a>); 7+ hours of sleep a night for adults (<a style="color:var(--green)" href="https://pubmed.ncbi.nlm.nih.gov/26039963/">AASM and SRS consensus, 2015</a>). HealthifyMe features are from its App Store listing. NABD gives wellness guidance, not medical advice. Members with health conditions should follow their doctor. Sara, her weight (65 kg), her day and all app screens are illustrative. Benefits describe what NABD is designed to achieve, not measured results. NABD is a work in progress: these guidelines are for this demo only, and the actual product will vary and will meet the medical and data regulations that apply. Shawarma photo: <a style="color:var(--green)" href="https://commons.wikimedia.org/wiki/File:Shawarma_Sandwich.jpg">Siqbal, Wikimedia Commons</a>, <a style="color:var(--green)" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, cropped.</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
