@@ -370,6 +370,8 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 .shot{position:relative;margin:4px 10px 0;border-radius:22px;overflow:hidden;aspect-ratio:6/5;background:#140D07}
 .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18);filter:saturate(.8) brightness(.8)}
 .scol.in .shot img{transition:transform 1.4s cubic-bezier(.2,.8,.2,1),filter .3s ease 1.25s;transform:scale(1);filter:saturate(1.1) brightness(1)}
+.shot:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 62% 66% at 50% 50%,transparent 70%,rgba(5,6,10,.78) 100%);pointer-events:none}
+.shot>i,.shot>span{z-index:2}
 .corner{position:absolute;width:26px;height:26px;border:3px solid #fff;opacity:.9;transition:all .5s ease}
 .corner.a{left:22px;top:22px;border-right:0;border-bottom:0;border-radius:10px 0 0 0}.corner.b{right:22px;top:22px;border-left:0;border-bottom:0;border-radius:0 10px 0 0}
 .corner.c{left:22px;bottom:22px;border-right:0;border-top:0;border-radius:0 0 0 10px}.corner.d{right:22px;bottom:22px;border-left:0;border-top:0;border-radius:0 0 10px 0}
@@ -441,7 +443,7 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
 .gshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12)}
 .scol.in .gshot img{transition:transform 6s ease-out;transform:scale(1)}
 .gshot:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,6,10,0) 35%,rgba(5,6,10,.85))}
-.gbadge{position:absolute;left:10px;bottom:10px;z-index:2;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--green);color:var(--on-green);font:700 12px var(--body);opacity:0;transform:translateY(10px)}
+.gbadge{align-self:flex-start;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--green);color:var(--on-green);font:700 12px var(--body);opacity:0;transform:translateY(10px)}
 .scol.in .gbadge{animation:nup .5s ease .5s both}
 .gbody{padding:12px 14px 16px;display:flex;flex-direction:column;gap:9px}
 .gk{font:600 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -1363,15 +1365,15 @@ html.inend .sctl{opacity:0;pointer-events:none}
     <div class="scol" style="--c:var(--sand)">
       <span class="lbl"><i>1</i>Food · one photo</span>
       <div class="dev"><div class="scr">
-        <div class="sbar"><b>NAB<i>D</i></b><span>1:42 pm · Lunch</span></div>
+        <div class="sbar"><b>Your gym app</b><span>1:42 pm · Lunch</span></div>
         <div class="shot">
-          <img src="img/kabsa.jpg" alt="Photo of chicken kabsa with nuts and raisins" width="720" height="600" loading="lazy" decoding="async">
+          <img src="img/kabsa.jpg" alt="Photo of a plate of chicken kabsa" width="720" height="600" loading="lazy" decoding="async">
           <i class="corner a"></i><i class="corner b"></i><i class="corner c"></i><i class="corner d"></i>
           <i class="flash"></i><i class="scanl"></i><i class="shut"></i>
-          <span class="tagf" style="left:44%;top:46%">Chicken</span>
-          <span class="tagf" style="left:8%;top:72%">Spiced rice</span>
-          <span class="tagf" style="left:40%;top:14%">Raisins</span>
-          <span class="tagf" style="left:64%;top:70%">Cashews</span>
+          <span class="tagf" style="left:52%;top:46%">Chicken</span>
+          <span class="tagf" style="left:24%;top:69%">Green chili</span>
+          <span class="tagf" style="left:50%;top:19%">Almonds &amp; pistachios</span>
+          <span class="tagf" style="left:56%;top:84%">Basmati rice</span>
         </div>
         <div class="sheet">
           <div class="sh1"><div class="dn">Chicken kabsa<small>1 plate · about 420 g</small></div><span class="rp ok">98% match</span></div>
@@ -1421,12 +1423,9 @@ html.inend .sctl{opacity:0;pointer-events:none}
     <div class="scol" style="--c:var(--green)">
       <span class="lbl"><i>3</i>Training · the gym</span>
       <div class="dev"><div class="scr">
-        <div class="sbar"><b>NAB<i>D</i></b><span>6:12 pm · Gym floor</span></div>
-        <div class="gshot">
-          <img src="img/gym.jpg" alt="Gym floor with strength machines and racks" width="800" height="533" loading="lazy" decoding="async">
+        <div class="sbar"><b>Your gym app</b><span>6:12 pm · Gym floor</span></div>
+<div class="gbody">
           <span class="gbadge">✓ Checked in · 6:12 pm</span>
-        </div>
-        <div class="gbody">
           <div class="live2">
             <div class="row2">
               <div class="rep"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="6"/><circle class="rr" id="reprr" cx="32" cy="32" r="27" fill="none" stroke="#4FE0BE" stroke-width="6" stroke-linecap="round" stroke-dasharray="170" stroke-dashoffset="170"/></svg><b><span id="repn">0</span><small>OF 8</small></b></div>
