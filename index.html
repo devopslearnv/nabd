@@ -352,7 +352,132 @@ footer{padding:24px max(18px,env(safe-area-inset-right,0px)) calc(36px + env(saf
   .ft .hd > div{font-size:9px;letter-spacing:.04em}
 }
 
-/* phase 2 */
+/* inside NABD: snap + watch */
+.snap{max-width:1120px;margin:0 auto;padding:clamp(80px,12vh,140px) 16px 20px}
+.snap h2{font-size:clamp(30px,4.6vw,54px);line-height:1.04;text-align:center;margin:14px auto;max-width:20ch}
+.snap .intro{text-align:center;color:var(--muted);max-width:56ch;margin:0 auto 38px;font-size:clamp(16px,1.9vw,19px)}
+.sgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(18px,3vw,36px);align-items:start}
+.scol{display:flex;flex-direction:column;align-items:center;gap:14px}
+.scol>.lbl{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand)}
+.scol.w>.lbl{color:var(--sky)}
+.dev{width:min(330px,100%);border-radius:40px;padding:12px;background:linear-gradient(160deg,#1A2A42,#0A1220);border:1.5px solid #2A3E5C;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 6px rgba(255,255,255,.02)}
+.scr{border-radius:30px;overflow:hidden;background:#0B1422;position:relative}
+.sbar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px 6px;font:600 12px var(--mono);color:var(--muted)}
+.sbar b{font-family:var(--display);font-size:15px;color:var(--ink);letter-spacing:.02em}.sbar b i{font-style:normal;color:var(--green)}
+.shot{position:relative;margin:4px 12px 0;border-radius:22px;overflow:hidden;aspect-ratio:1/0.86;background:radial-gradient(circle at 50% 40%,#3A2A1A,#140D07)}
+.shot svg{width:100%;height:100%;display:block}
+.corner{position:absolute;width:26px;height:26px;border:3px solid #fff;opacity:.9}
+.corner.a{left:12px;top:12px;border-right:0;border-bottom:0;border-radius:10px 0 0 0}.corner.b{right:12px;top:12px;border-left:0;border-bottom:0;border-radius:0 10px 0 0}
+.corner.c{left:12px;bottom:12px;border-right:0;border-top:0;border-radius:0 0 0 10px}.corner.d{right:12px;bottom:12px;border-left:0;border-top:0;border-radius:0 0 10px 0}
+.scanl{position:absolute;left:6%;right:6%;top:8%;height:3px;border-radius:3px;background:var(--green);box-shadow:0 0 18px 4px rgba(79,224,190,.6);opacity:0}
+.snap.in .scanl{animation:nscan 1.5s ease-in-out .3s 2 alternate both}
+@keyframes nscan{0%{top:8%;opacity:1}100%{top:90%;opacity:1}}
+.snap.in .scanl{animation-fill-mode:none}
+.tagf{position:absolute;padding:4px 9px;border-radius:999px;background:rgba(5,6,10,.72);backdrop-filter:blur(6px);font:600 11px var(--body);color:#fff;border:1px solid rgba(255,255,255,.25);opacity:0;transform:scale(.6)}
+.snap.in .tagf{animation:npop .4s cubic-bezier(.3,1.6,.5,1) both}
+.snap.in .tagf:nth-of-type(1){animation-delay:2.1s}.snap.in .tagf:nth-of-type(2){animation-delay:2.3s}.snap.in .tagf:nth-of-type(3){animation-delay:2.5s}.snap.in .tagf:nth-of-type(4){animation-delay:2.7s}
+@keyframes npop{to{opacity:1;transform:none}}
+.sheet{padding:14px 16px 18px;opacity:0;transform:translateY(30px)}
+.snap.in .sheet{animation:nup .6s ease 2.9s both}
+@keyframes nup{to{opacity:1;transform:none}}
+.sh1{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.sh1 .dn{font:700 16px var(--display)}.sh1 .dn small{display:block;font:500 12px var(--body);color:var(--muted)}
+.kcal{display:flex;align-items:center;gap:10px;margin:12px 0;padding:12px 14px;border-radius:18px;background:#121F33}
+.kcal .fl{width:34px;height:34px;border-radius:50%;background:rgba(255,107,87,.15);display:flex;align-items:center;justify-content:center}
+.kcal .n{font:800 34px/1 var(--display)}.kcal .u{font-size:12px;color:var(--muted)}
+.macros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mac{padding:10px 6px;border-radius:16px;background:#121F33;text-align:center}
+.mac svg{width:46px;height:46px;display:block;margin:0 auto 4px}
+.mac .ring{transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1) 3.3s}
+.mac b{display:block;font:700 15px var(--display)}.mac span{font-size:11px;color:var(--muted)}
+.hsc{margin-top:10px;padding:10px 12px;border-radius:16px;background:#121F33;font-size:12px;color:var(--muted)}
+.hsc .top{display:flex;justify-content:space-between;margin-bottom:6px}.hsc .top b{color:var(--ink)}
+.hsc .bar{height:7px;border-radius:7px;background:rgba(255,255,255,.08);overflow:hidden}
+.hsc .bar i{display:block;height:100%;width:0;border-radius:7px;background:linear-gradient(90deg,var(--sand),var(--green));transition:width 1.2s ease 3.6s}
+.snap.in .hsc .bar i{width:70%}
+.stip{margin-top:10px;font-size:12.5px;color:var(--ink);padding:10px 12px;border-radius:14px;border:1px solid rgba(79,224,190,.4);background:rgba(79,224,190,.07)}
+/* watch */
+.wwrap{display:flex;gap:clamp(14px,2.4vw,26px);align-items:center;width:100%;justify-content:center;flex-wrap:wrap}
+.watch{width:clamp(150px,17vw,190px);flex:0 0 auto}
+.watch .hb{transform-origin:100px 118px;animation:beat 1s ease-in-out infinite}
+.ecg{stroke-dasharray:420;stroke-dashoffset:420;animation:necg 2s linear infinite}
+@keyframes necg{to{stroke-dashoffset:0}}
+.dash{flex:1 1 300px;max-width:440px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.wt{padding:12px 14px;border-radius:18px;background:var(--card);border:1px solid var(--line);opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
+.snap.in .wt{opacity:1;transform:none}
+.snap.in .wt:nth-child(2){transition-delay:.15s}.snap.in .wt:nth-child(3){transition-delay:.3s}.snap.in .wt:nth-child(4){transition-delay:.45s}.snap.in .wt:nth-child(5){transition-delay:.6s}
+.wt .k{font:600 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.wt .v{font:800 24px/1.1 var(--display);margin:4px 0 2px}.wt .v small{font:500 12px var(--body);color:var(--muted)}
+.wt .d{font-size:12px}
+.wt svg{width:100%;height:46px;display:block;margin-top:6px}
+.wt .ln{stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.6s ease .5s}
+.snap.in .wt .ln{stroke-dashoffset:0}
+.wt .hbx{transform-box:fill-box;transform-origin:left;transform:scaleX(0);transition:transform 1s ease}
+.snap.in .wt .hbx{transform:none}
+.snap.in .mac .ring{stroke-dashoffset:var(--o)}
+.wt .wbar{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);transition:transform .6s ease}
+.snap.in .wt .wbar{transform:scaleY(1)}
+.wt.wide{grid-column:1/-1}
+.hyp{display:flex;height:22px;border-radius:6px;overflow:hidden;margin-top:8px}
+.hyp i{display:block;height:100%;transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
+.snap.in .hyp i{transform:none}
+.hleg{display:flex;gap:12px;margin-top:6px;font-size:11px;color:var(--muted)}.hleg span:before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;background:var(--c)}
+.wt.read{grid-column:1/-1;border-color:rgba(79,224,190,.45);background:rgba(79,224,190,.07);font-size:13.5px}
+.wt.read b{color:var(--green)}
+.srcs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;font-size:11px;color:var(--muted)}
+.srcs span{padding:4px 9px;border-radius:999px;border:1px solid var(--line)}
+@media (max-width:860px){.sgrid{grid-template-columns:minmax(0,1fr);gap:44px}}
+@media (max-width:420px){.dash{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}.wt{padding:10px}.wt .v{font-size:20px}.watch{width:140px}}
+
+/* phase 2 · heart */
+.p2s{max-width:1120px;margin:0 auto;padding:clamp(80px,12vh,140px) 16px 40px;display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3.4vh,34px);text-align:center}
+.p2s .stmt{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.2vw,40px);line-height:1.15;max-width:28ch}
+.p2s .tag{position:static;transform:none;white-space:normal;max-width:none;width:auto}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.hrtg{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr) minmax(0,1.2fr);gap:clamp(14px,2.4vw,28px);align-items:center;width:100%}
+.hin{display:flex;flex-direction:column;gap:8px;align-items:stretch}
+.hin span{display:flex;justify-content:space-between;gap:8px;padding:9px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line);font-size:13px;text-align:left;opacity:0;transform:translateX(-24px);transition:opacity .5s,transform .5s}
+.hin span b{font-family:var(--mono);font-size:12px;color:var(--sky);white-space:nowrap}
+.hin span.cl b{color:var(--sand)}
+.hrtg.in .hin span{opacity:1;transform:none}
+.hrtg.in .hin span:nth-child(2){transition-delay:.12s}.hrtg.in .hin span:nth-child(3){transition-delay:.24s}.hrtg.in .hin span:nth-child(4){transition-delay:.36s}.hrtg.in .hin span:nth-child(5){transition-delay:.48s}
+.hcore{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px}
+.hcore svg.hrt{width:clamp(150px,18vw,210px);height:auto;overflow:visible}
+.hcore .hb{transform-origin:100px 100px;animation:beat 1.1s ease-in-out infinite}
+.hcore .orb{fill:none;stroke:var(--green);stroke-width:1.5;stroke-dasharray:4 8;transform-origin:100px 100px;animation:nspin 14s linear infinite}
+.hcore .orb2{animation-duration:9s;animation-direction:reverse;stroke:var(--sky)}
+@keyframes nspin{to{transform:rotate(360deg)}}
+.hcore .scanh{animation:nhscan 2.4s ease-in-out infinite alternate}
+@keyframes nhscan{from{transform:translateY(-62px)}to{transform:translateY(62px)}}
+.hcore .lbl{font:600 11px var(--mono);letter-spacing:.14em;color:var(--green);text-transform:uppercase}
+.hcore .sim{font-size:12px;color:var(--muted)}
+.risk{padding:16px;border-radius:20px;background:var(--card);border:1px solid var(--line);text-align:left}
+.risk .k{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+.risk svg{width:100%;height:auto;display:block;margin:8px 0}
+.risk .tr{stroke-dasharray:700;stroke-dashoffset:700;transition:stroke-dashoffset 2s ease .6s}
+.hrtg.in .risk .tr{stroke-dashoffset:0}
+.risk .flag{opacity:0;transition:opacity .6s ease 2.4s}
+.hrtg.in .risk .flag{opacity:1}
+.pat{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:13px;opacity:0;transition:opacity .5s}
+.hrtg.in .pat{opacity:1}.hrtg.in .pat:nth-of-type(2){transition-delay:2.6s}.hrtg.in .pat:nth-of-type(3){transition-delay:2.8s}.hrtg.in .pat:nth-of-type(4){transition-delay:3s}
+.rp{flex:0 0 auto;font:700 10.5px var(--mono);letter-spacing:.06em;padding:3px 8px;border-radius:999px}
+.rp.w{background:rgba(240,217,168,.15);color:var(--sand)}.rp.r{background:rgba(255,107,87,.15);color:var(--red)}.rp.ok{background:rgba(79,224,190,.15);color:var(--green)}
+.risk .doc{margin-top:8px;font-size:12.5px;color:var(--green);opacity:0;transition:opacity .5s 3.3s}
+.hrtg.in .risk .doc{opacity:1}
+.road{display:flex;align-items:flex-start;width:100%;max-width:860px}
+.road .st{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;font-size:13px;color:var(--muted)}
+.road .st:not(:last-child):after{content:"";position:absolute;top:14px;left:calc(50% + 18px);right:calc(-50% + 18px);border-top:2px dashed var(--line)}
+.road .dt{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);background:var(--bg);display:flex;align-items:center;justify-content:center;font:700 11px var(--mono)}
+.road .st.now{color:var(--ink)}.road .st.now .dt{background:var(--red);border-color:var(--red);box-shadow:0 0 0 0 rgba(255,107,87,.6);animation:nping 1.6s infinite}
+.road .st.now b{color:var(--red)}
+.road b{font-family:var(--display);font-size:15px;color:var(--ink)}
+@keyframes nping{70%{box-shadow:0 0 0 14px rgba(255,107,87,0)}100%{box-shadow:0 0 0 0 rgba(255,107,87,0)}}
+.p2s .fine{font-size:12.5px;color:var(--muted);max-width:72ch}
+@media (max-width:860px){.hrtg{grid-template-columns:minmax(0,1fr);gap:22px}.hin{display:grid;grid-template-columns:1fr 1fr}.hin span{flex-direction:column;gap:2px;font-size:12px}.risk{max-width:460px;margin:0 auto;width:100%}}
+@media (max-width:520px){.road .st{font-size:11px}.road b{font-size:13px}}
+
+/* phase 2 (legacy) */
 .p2{width:min(1000px,100%);display:flex;flex-direction:column;align-items:center;gap:clamp(18px,3.4vh,34px)}
 .p2 .stmt{font-family:var(--display);font-weight:700;font-size:clamp(22px,3vw,38px);line-height:1.18;max-width:30ch}
 .p2row{display:flex;align-items:center;width:100%;max-width:820px}
@@ -1154,6 +1279,91 @@ html.inend .sctl{opacity:0;pointer-events:none}
   </div>
 </section>
 
+<section class="snap" id="snap">
+  <p class="eyebrow" style="text-align:center">Inside NABD</p>
+  <h2>Snap a meal. <span class="g">Wear a watch.</span> That's it.</h2>
+  <p class="intro">No typing, no searching. One photo gives calories and macros. The watch fills in sleep, heart and activity on its own.</p>
+  <div class="sgrid">
+    <div class="scol">
+      <span class="lbl">1 · Food, from one photo</span>
+      <div class="dev"><div class="scr">
+        <div class="sbar"><b>NAB<i>D</i></b><span>1:42 pm · Lunch</span></div>
+        <div class="shot">
+          <svg viewBox="0 0 300 258" aria-label="Photo of a chicken kabsa plate">
+            <defs>
+              <radialGradient id="kpl" cx="50%" cy="45%" r="55%"><stop offset=".78" stop-color="#F4EFE6"/><stop offset=".86" stop-color="#D9D0C2"/><stop offset="1" stop-color="#9C907E"/></radialGradient>
+              <radialGradient id="krc" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#F2B65A"/><stop offset=".7" stop-color="#D98B2F"/><stop offset="1" stop-color="#A9601C"/></radialGradient>
+              <radialGradient id="kch" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#C77834"/><stop offset=".7" stop-color="#8E4517"/><stop offset="1" stop-color="#5B2A0C"/></radialGradient>
+              <pattern id="kgr" width="9" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(25)"><ellipse cx="4" cy="3" rx="3.2" ry="1.1" fill="#FFD58A" opacity=".55"/></pattern>
+            </defs>
+            <rect width="300" height="258" fill="#24170C"/>
+            <rect width="300" height="258" fill="url(#kgr)" opacity=".05"/>
+            <ellipse cx="150" cy="132" rx="138" ry="118" fill="#000" opacity=".35"/>
+            <ellipse cx="150" cy="126" rx="134" ry="114" fill="url(#kpl)"/>
+            <ellipse cx="150" cy="128" rx="104" ry="86" fill="url(#krc)"/>
+            <ellipse cx="150" cy="128" rx="104" ry="86" fill="url(#kgr)"/>
+            <g transform="rotate(-18 128 112)"><ellipse cx="128" cy="112" rx="40" ry="26" fill="url(#kch)"/><ellipse cx="118" cy="104" rx="14" ry="7" fill="#E09A55" opacity=".5"/></g>
+            <g transform="rotate(22 182 138)"><ellipse cx="182" cy="138" rx="34" ry="22" fill="url(#kch)"/><ellipse cx="174" cy="131" rx="11" ry="5" fill="#E09A55" opacity=".5"/></g>
+            <g fill="#3B1D0E"><circle cx="96" cy="150" r="4"/><circle cx="106" cy="160" r="3.6"/><circle cx="208" cy="102" r="4"/><circle cx="196" cy="176" r="3.6"/><circle cx="150" cy="180" r="3.4"/></g>
+            <g fill="#F6E6C8"><ellipse cx="160" cy="96" rx="5" ry="2.4" transform="rotate(30 160 96)"/><ellipse cx="88" cy="128" rx="5" ry="2.4"/><ellipse cx="214" cy="150" rx="5" ry="2.4" transform="rotate(-20 214 150)"/><ellipse cx="132" cy="168" rx="5" ry="2.4"/></g>
+            <g fill="#5FAE4E"><circle cx="146" cy="138" r="3"/><circle cx="170" cy="112" r="2.6"/><circle cx="112" cy="138" r="2.4"/><circle cx="200" cy="124" r="2.6"/></g>
+            <ellipse cx="236" cy="210" rx="34" ry="18" fill="#E8F0E0" opacity=".95"/><circle cx="226" cy="206" r="6" fill="#C9473B"/><circle cx="242" cy="210" r="5" fill="#5FAE4E"/><circle cx="252" cy="204" r="4" fill="#F0D9A8"/>
+          </svg>
+          <i class="corner a"></i><i class="corner b"></i><i class="corner c"></i><i class="corner d"></i>
+          <i class="scanl"></i>
+          <span class="tagf" style="left:30%;top:30%">Chicken</span>
+          <span class="tagf" style="left:12%;top:64%">Basmati rice</span>
+          <span class="tagf" style="left:56%;top:24%">Nuts &amp; raisins</span>
+          <span class="tagf" style="left:62%;top:84%">Salad</span>
+        </div>
+        <div class="sheet">
+          <div class="sh1"><div class="dn">Chicken kabsa<small>1 plate · about 420 g</small></div><span class="rp ok">98% match</span></div>
+          <div class="kcal"><span class="fl"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M9 1c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-4 2-6 1 1 2 2 2 3 1-3 2-5 2-8z" fill="#FF6B57"/></svg></span><div><div class="n"><span class="cnt" data-to="612">0</span></div><span class="u">calories</span></div></div>
+          <div class="macros">
+            <div class="mac"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle class="ring" cx="23" cy="23" r="18" fill="none" stroke="#FF6B57" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="113" style="--o:42" transform="rotate(-90 23 23)"/></svg><b><span class="cnt" data-to="38">0</span> g</b><span>Protein</span></div>
+            <div class="mac"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle class="ring" cx="23" cy="23" r="18" fill="none" stroke="#F0D9A8" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="113" style="--o:28" transform="rotate(-90 23 23)"/></svg><b><span class="cnt" data-to="72">0</span> g</b><span>Carbs</span></div>
+            <div class="mac"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="5"/><circle class="ring" cx="23" cy="23" r="18" fill="none" stroke="#8DB4FF" stroke-width="5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="113" style="--o:64" transform="rotate(-90 23 23)"/></svg><b><span class="cnt" data-to="18">0</span> g</b><span>Fat</span></div>
+          </div>
+          <div class="hsc"><div class="top"><span>Health score</span><b>7 / 10</b></div><div class="bar"><i></i></div></div>
+          <div class="stip">Good protein. Today: 63 of 100 g. Add laban at 4 pm.</div>
+        </div>
+      </div></div>
+    </div>
+    <div class="scol w">
+      <span class="lbl">2 · Body, from the watch</span>
+      <div class="wwrap">
+        <svg class="watch" viewBox="0 0 200 290" aria-label="Smartwatch showing heart rate 72">
+          <defs><linearGradient id="wst" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1C2738"/><stop offset="1" stop-color="#0E1520"/></linearGradient></defs>
+          <rect x="52" y="0" width="96" height="70" rx="14" fill="url(#wst)"/><rect x="52" y="220" width="96" height="70" rx="14" fill="url(#wst)"/>
+          <rect x="22" y="40" width="156" height="200" rx="44" fill="#2A3548" stroke="#3E4C64" stroke-width="2"/>
+          <rect x="176" y="96" width="9" height="30" rx="4" fill="#3E4C64"/>
+          <rect x="32" y="50" width="136" height="180" rx="36" fill="#03060B"/>
+          <text x="100" y="80" text-anchor="middle" fill="#A3B0C2" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="2">HEART</text>
+          <path class="hb" d="M100 132c-14-10-24-18-24-28a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 10-10 18-24 28z" fill="#FF6B57" style="filter:drop-shadow(0 0 8px rgba(255,107,87,.7))"/>
+          <text x="100" y="170" text-anchor="middle" fill="#EEF2F7" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="34">72</text>
+          <text x="100" y="186" text-anchor="middle" fill="#A3B0C2" font-family="Instrument Sans, sans-serif" font-size="11">BPM · resting 66</text>
+          <path class="ecg" d="M42 206h30l5-10 6 22 6-30 6 26 4-8h59" fill="none" stroke="#4FE0BE" stroke-width="2.2" stroke-linejoin="round"/>
+        </svg>
+        <div class="dash">
+          <div class="wt"><span class="k">Resting heart</span><div class="v">66 <small>bpm</small></div><span class="d r">↑ 8 bpm this week</span>
+            <svg viewBox="0 0 120 46" preserveAspectRatio="none"><path class="ln" d="M2 38 L20 36 L38 34 L56 30 L74 24 L92 18 L118 10" fill="none" stroke="#FF6B57" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg></div>
+          <div class="wt"><span class="k">HRV</span><div class="v">31 <small>ms</small></div><span class="d r">↓ below her normal</span>
+            <svg viewBox="0 0 120 46" preserveAspectRatio="none"><g fill="#8DB4FF"><rect class="wbar" x="2" y="8" width="12" height="38" rx="3"/><rect class="wbar" x="19" y="12" width="12" height="34" rx="3" style="transition-delay:.1s"/><rect class="wbar" x="36" y="10" width="12" height="36" rx="3" style="transition-delay:.2s"/><rect class="wbar" x="53" y="18" width="12" height="28" rx="3" style="transition-delay:.3s"/><rect class="wbar" x="70" y="22" width="12" height="24" rx="3" style="transition-delay:.4s"/><rect class="wbar" x="87" y="26" width="12" height="20" rx="3" style="transition-delay:.5s"/><rect class="wbar" x="104" y="30" width="12" height="16" rx="3" fill="#FF6B57" style="transition-delay:.6s"/></g></svg></div>
+          <div class="wt wide"><span class="k">Sleep last night</span><div class="v">5h 10m <small>· goal 7h+</small></div>
+            <div class="hyp"><i style="flex:2;background:#8DB4FF;transition-delay:.6s"></i><i style="flex:3;background:#3E6FD8;transition-delay:.75s"></i><i style="flex:1.2;background:#B48DFF;transition-delay:.9s"></i><i style="flex:.6;background:#FF6B57;transition-delay:1.05s"></i><i style="flex:2.4;background:#8DB4FF;transition-delay:1.2s"></i><i style="flex:1;background:#B48DFF;transition-delay:1.35s"></i></div>
+            <div class="hleg"><span style="--c:#8DB4FF">Light</span><span style="--c:#3E6FD8">Deep</span><span style="--c:#B48DFF">REM</span><span style="--c:#FF6B57">Awake</span></div></div>
+          <div class="wt"><span class="k">Steps</span><div class="v"><span class="cnt" data-to="4200" data-fmt="1">0</span></div><span class="d" style="color:var(--muted)">of 8,000 goal</span>
+            <svg viewBox="0 0 120 46" preserveAspectRatio="none"><rect x="2" y="18" width="116" height="10" rx="5" fill="rgba(255,255,255,.08)"/><rect class="hbx" x="2" y="18" width="61" height="10" rx="5" fill="#4FE0BE" style="transition-delay:.7s"/></svg></div>
+          <div class="wt"><span class="k">Water</span><div class="v">1.4 <small>of 3 L</small></div><span class="d" style="color:var(--sand)">Hot day · drink more</span>
+            <svg viewBox="0 0 120 46" preserveAspectRatio="none"><g fill="#8DB4FF"><rect class="wbar" x="4" y="14" width="18" height="30" rx="5" style="transition-delay:.8s"/><rect class="wbar" x="28" y="14" width="18" height="30" rx="5" style="transition-delay:.9s"/><rect class="wbar" x="52" y="14" width="18" height="30" rx="5" style="transition-delay:1s"/></g><g fill="rgba(255,255,255,.08)"><rect x="76" y="14" width="18" height="30" rx="5"/><rect x="100" y="14" width="18" height="30" rx="5"/></g></svg></div>
+          <div class="wt read"><b>NABD reads it:</b> short sleep, heart working harder, low recovery. <b>Swap GRIT for Pilates today.</b></div>
+        </div>
+      </div>
+      <div class="srcs"><span>Apple Watch</span><span>Fitbit</span><span>Garmin</span><span>Samsung</span><span>WHOOP</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="feat">
   <p class="eyebrow" style="text-align:center">Best of both worlds</p>
   <h2>A nutrition app's best features, <span class="g">inside the gym app.</span></h2>
@@ -1170,29 +1380,59 @@ html.inend .sctl{opacity:0;pointer-events:none}
   </div>
 </section>
 
-<section class="pin" data-k="p2" style="--h:260vh">
-  <div class="stick">
-    <span class="eyebrow tag">Phase 2 · What comes next</span>
-    <div class="p2">
-      <p class="stmt">As part of <span class="g">NABD Phase 2</span>, we plan to link NABD to hospitals for better data capture and earlier diagnosis of health issues.</p>
-      <div class="p2row">
-        <div class="p2n nb">NABD</div>
-        <div class="p2c" id="p2c">
-          <div class="ln" id="p2ln"></div>
-          <div class="lock" id="p2lock"><svg width="22" height="22" viewBox="0 0 22 22"><rect x="4" y="10" width="14" height="10" rx="2.5" fill="none" stroke="#F0D9A8" stroke-width="2"/><path d="M7 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="#F0D9A8" stroke-width="2"/></svg></div>
-          <span class="lab" id="p2lab">MEMBER'S EXPLICIT CONSENT</span>
-          <span class="chipf" id="ch0">Lab results</span><span class="chipf" id="ch1">Check-up history</span><span class="chipf out" id="ch2">Early warning flags</span>
-        </div>
-        <div class="p2n hs"><svg width="40" height="40" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="26" rx="3" fill="none" stroke="#8DB4FF" stroke-width="2.4"/><path d="M20 15v10M15 20h10" stroke="#FF6B57" stroke-width="3" stroke-linecap="round"/><path d="M14 36v-6h12v6" fill="none" stroke="#8DB4FF" stroke-width="2.4"/></svg>Hospitals<br>and clinics</div>
+<section class="p2s" data-k="p2" id="p2">
+    <span class="eyebrow tag rv">Phase 2 · Starting with the heart</span>
+    <p class="stmt rv">Phase 2 links NABD to hospitals and <span class="g">medical simulations</span>, to spot heart risk patterns early. <span style="color:var(--muted)">We start with the heart, then go deeper.</span></p>
+    <div class="hrtg" id="hgrid">
+      <div class="hin">
+        <span>Resting heart rate <b>Watch</b></span>
+        <span>HRV and recovery <b>Watch</b></span>
+        <span>Rhythm (ECG) alerts <b>Watch</b></span>
+        <span>Sleep and activity <b>Watch</b></span>
+        <span class="cl">Blood pressure, lipids <b>Clinic</b></span>
       </div>
-      <div class="p2list" id="p2list">
-        <div><b>Richer data</b>Lab results, such as vitamin D, iron or blood sugar, shape her food and training plan.</div>
-        <div><b>Earlier diagnosis</b>Warning signs, like long-term poor sleep or a resting heart rate that keeps rising, go to a doctor sooner.</div>
-        <div><b>Doctor-safe plans</b>Members with a condition get plans that follow their doctor's advice.</div>
+      <div class="hcore">
+        <svg class="hrt" viewBox="0 0 200 200" aria-label="Heart simulation">
+          <defs>
+            <radialGradient id="hg" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FF8A78"/><stop offset=".6" stop-color="#E0453A"/><stop offset="1" stop-color="#8E1F1A"/></radialGradient>
+            <clipPath id="hclip"><path d="M100 160C62 134 40 112 40 86a30 30 0 0 1 60-12 30 30 0 0 1 60 12c0 26-22 48-60 74z"/></clipPath>
+          </defs>
+          <circle class="orb" cx="100" cy="100" r="92"/>
+          <circle class="orb orb2" cx="100" cy="100" r="78"/>
+          <circle cx="100" cy="100" r="66" fill="rgba(255,107,87,.08)"/>
+          <g class="hb">
+            <path d="M100 160C62 134 40 112 40 86a30 30 0 0 1 60-12 30 30 0 0 1 60 12c0 26-22 48-60 74z" fill="url(#hg)" style="filter:drop-shadow(0 0 18px rgba(255,107,87,.55))"/>
+            <g clip-path="url(#hclip)" stroke="#FFD0C8" stroke-width="1" opacity=".35" fill="none"><path d="M40 90h120M40 110h120M40 130h120M40 70h120M70 50v120M100 50v120M130 50v120"/></g>
+            <path d="M78 76c8 6 10 20 22 26M122 72c-6 10-4 24-22 30" fill="none" stroke="#FFD0C8" stroke-width="2" opacity=".6" stroke-linecap="round"/>
+            <g clip-path="url(#hclip)"><rect class="scanh" x="30" y="98" width="140" height="4" fill="#4FE0BE" opacity=".9" style="filter:drop-shadow(0 0 6px #4FE0BE)"/></g>
+          </g>
+        </svg>
+        <span class="lbl">Heart simulation</span>
+        <span class="sim">Her data, run against heart risk models</span>
       </div>
-      <p class="fine">Health data is sensitive personal data under Saudi Arabia's PDPL and needs the member's explicit consent. Any link would follow Saudi Health Information Exchange consent and access rules.</p>
+      <div class="risk">
+        <div class="k"><span>Risk patterns · 90 days</span><span style="color:var(--sand)">Demo</span></div>
+        <svg viewBox="0 0 300 120" aria-label="Resting heart rate trend over 90 days with a flagged rising pattern">
+          <rect class="flag" x="190" y="6" width="106" height="98" rx="8" fill="rgba(255,107,87,.12)" stroke="rgba(255,107,87,.5)" stroke-dasharray="4 4"/>
+          <text class="flag" x="243" y="20" text-anchor="middle" fill="#FF6B57" font-family="JetBrains Mono, monospace" font-size="10">PATTERN FLAGGED</text>
+          <path d="M4 84H296" stroke="rgba(255,255,255,.12)" stroke-dasharray="3 5"/>
+          <text x="6" y="80" fill="#A3B0C2" font-family="JetBrains Mono, monospace" font-size="9">her normal · 58</text>
+          <path class="tr" d="M4 86 L24 82 L44 88 L64 84 L84 86 L104 80 L124 85 L144 82 L164 80 L184 76 L204 70 L224 62 L244 56 L264 48 L284 40 L296 36" fill="none" stroke="#FF6B57" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="4" y="116" fill="#A3B0C2" font-family="JetBrains Mono, monospace" font-size="9">Day 1</text><text x="296" y="116" text-anchor="end" fill="#A3B0C2" font-family="JetBrains Mono, monospace" font-size="9">Today · 67</text>
+        </svg>
+        <div class="pat"><span>Resting heart rate rising for 6 weeks</span><span class="rp r">REFER</span></div>
+        <div class="pat"><span>HRV trending down, poor sleep</span><span class="rp w">WATCH</span></div>
+        <div class="pat"><span>Rhythm alerts</span><span class="rp ok">NORMAL</span></div>
+        <div class="doc">→ Shared with her doctor, with her consent. Training plan eased meanwhile.</div>
+      </div>
     </div>
-  </div>
+    <div class="road rv">
+      <div class="st now"><span class="dt">1</span><b>Heart</b>Starting now</div>
+      <div class="st"><span class="dt">2</span><b>Metabolic</b>Blood sugar, weight</div>
+      <div class="st"><span class="dt">3</span><b>Sleep &amp; breathing</b>Recovery, apnea signs</div>
+      <div class="st"><span class="dt">4</span><b>More</b>Deeper, step by step</div>
+    </div>
+    <p class="fine rv">NABD flags patterns. Diagnosis always stays with doctors. Health data is sensitive personal data under Saudi Arabia's PDPL and needs the member's explicit consent; any hospital link would follow Saudi Health Information Exchange consent and access rules.</p>
 </section>
 
 <section class="fin">
@@ -1913,20 +2153,20 @@ html.inend .sctl{opacity:0;pointer-events:none}
     ccount.textContent = n;
   }
 
-  /* ---------- phase 2 ---------- */
-  var p2ln = $('p2ln'), p2lock = $('p2lock'), p2lab = $('p2lab'), chs = [$('ch0'), $('ch1'), $('ch2')], p2lis = $('p2list').children;
-  function p2(p){
-    p2ln.style.transform = 'scaleX(' + eio(seg(p, .08, .3)) + ')';
-    var lk = seg(p, .3, .38);
-    p2lock.style.opacity = lk; p2lock.style.transform = 'scale(' + (lk > 0 ? back(lk) : 0) + ')';
-    p2lab.style.opacity = seg(p, .36, .42);
-    [[.42, .6, 1], [.52, .7, 1], [.66, .84, 0]].forEach(function(c, k){
-      var t = seg(p, c[0], c[1]), x = c[2] ? lerp(96, 4, eio(t)) : lerp(4, 96, eio(t));
-      chs[k].style.left = x + '%';
-      chs[k].style.opacity = t > 0 && t < 1 ? 1 : 0;
+  /* ---------- inside NABD + phase 2 (reveal on view) ---------- */
+  function countUp(root){
+    root.querySelectorAll('.cnt').forEach(function(c){
+      var to = +c.getAttribute('data-to'), f = c.getAttribute('data-fmt'), d = c.closest('.sheet') ? 3300 : 400;
+      function put(v){ c.textContent = f ? Math.round(v).toLocaleString('en-US') : Math.round(v); }
+      if (reduce){ put(to); return; }
+      setTimeout(function(){ var t0 = performance.now(); (function st(t){ var k = cl((t - t0) / 1300); put(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(st); })(t0); }, d);
     });
-    for (var i = 0; i < p2lis.length; i++) p2lis[i].classList.toggle('on', p > .6 + i * .1);
   }
+  function p2(){ document.querySelectorAll('#p2 .rv, #hgrid, #snap').forEach(function(e){ e.classList.add('in'); }); countUp($('snap')); }
+  if ('IntersectionObserver' in window && !reduce){
+    var io3 = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); if (e.target.id === 'snap') countUp(e.target); io3.unobserve(e.target); } }); }, {threshold: .18});
+    document.querySelectorAll('#p2 .rv, #hgrid, #snap').forEach(function(e){ io3.observe(e); });
+  } else p2();
 
   (function(){ var hv = $('hrv'); if (!hv) return; if (reduce){ hv.textContent = '71'; return; } setTimeout(function(){ var t0 = performance.now(); (function st(t){ var k = cl((t - t0) / 1800); hv.textContent = Math.round(71 * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(st); })(t0); }, 1000);
     var hph = $('hph'); if (hph && window.matchMedia('(pointer:fine)').matches){ window.addEventListener('pointermove', function(e){ if (window.scrollY > window.innerHeight) return; var x = e.clientX / window.innerWidth - .5, y = e.clientY / window.innerHeight - .5; hph.style.transform = 'rotateY(' + (-16 + x * 16) + 'deg) rotateX(' + (6 - y * 10) + 'deg)'; }, {passive: true}); } })();
@@ -2068,7 +2308,7 @@ html.inend .sctl{opacity:0;pointer-events:none}
   var MOOD = {two: .3, part: 0, sara: 0, clock: 0, apps: 0, miss: 0, truth: 0, omar: 0, words: .6, build: 1, dots: 1, plan: 1, day: 1, loop: 1, omarwin: 1, funnel: 1, closed: 1, result: 1, p2: 1, appsT: 0, engine: 1, sday: 1, oway: 1};
 
   /* ---------- engine ---------- */
-  var H = { two: two, part: part, omar: omar, omarwin: omarwin, funnel: funnelFn, sara: sara, clock: clock, apps: appsFn, miss: miss, truth: truth, words: words, build: build, dots: dots, plan: plan, day: day, loop: loop, closed: closed, result: result, p2: p2 };
+  var H = { two: two, part: part, omar: omar, omarwin: omarwin, funnel: funnelFn, sara: sara, clock: clock, apps: appsFn, miss: miss, truth: truth, words: words, build: build, dots: dots, plan: plan, day: day, loop: loop, closed: closed, result: result };
   H.sara = saraX; H.omar = omarX; H.appsT = appsT; H.build = buildX; H.engine = engineX; H.sday = sdayX; H.oway = owayX;
   var pins = Array.prototype.slice.call(document.querySelectorAll('.pin'));
   var prog = $('prog'), ticking = false;
@@ -2111,7 +2351,7 @@ html.inend .sctl{opacity:0;pointer-events:none}
   }
   if (reduce){
     document.documentElement.classList.add('static');
-    two(1); document.querySelectorAll('[data-k=part]').forEach(function(sec){ part(.5, sec); }); omar(.7); omarwin(1); funnelFn(1, fsec, 0); sara(1); clock(1); appsFn(1); miss(1); truth(1); words(1); build(.78); if (P3){ P3.size(); P3.renderOnce(.7); } dots(1); plan(1); day(.5); loop(1); closed(1); result(1); p2(1);
+    two(1); document.querySelectorAll('[data-k=part]').forEach(function(sec){ part(.5, sec); }); omar(.7); omarwin(1); funnelFn(1, fsec, 0); sara(1); clock(1); appsFn(1); miss(1); truth(1); words(1); build(.78); if (P3){ P3.size(); P3.renderOnce(.7); } dots(1); plan(1); day(.5); loop(1); closed(1); result(1);
   } else {
     window.addEventListener('scroll', req, {passive: true});
     window.addEventListener('resize', req);
@@ -2150,7 +2390,7 @@ html.inend .sctl{opacity:0;pointer-events:none}
       {t:'Win · the problem', c:'var(--sky)', it:[['omar','[data-k=omar]','Meet Omar','05']]},
       {t:'Meet NABD', c:'var(--green)', it:[['layers','[data-k=build]','Six layers, one app','06'],['engine','[data-k=engine]','The engine','07']]},
       {t:'With NABD', c:'var(--green)', it:[['sara-day','[data-k=sday]',"Sara's day with NABD",'08'],['omar-way-in','[data-k=oway]',"Omar's way in",'09']]},
-      {t:'The outcome', c:'var(--green)', it:[['closed','[data-k=closed]','Every problem, closed','10'],['endings','[data-k=result]','Better endings','11'],['features','.feat','Best features, inside the gym app']]},
+      {t:'The outcome', c:'var(--green)', it:[['closed','[data-k=closed]','Every problem, closed','10'],['endings','[data-k=result]','Better endings','11'],['inside','#snap','Snap a meal, wear a watch'],['features','.feat','Best features, inside the gym app']]},
       {t:"What's next", c:'var(--sand)', it:[['phase-2','[data-k=p2]','Phase 2'],['finale','.fin','Who wins'],['contact','#contact',"Let's talk"]]}
     ];
     /* slide steps: scene progress values where each click lands (taken from each scene's own timings).
@@ -2469,18 +2709,20 @@ html.inend .sctl{opacity:0;pointer-events:none}
     });
     /* ---------- replay + autoplay ---------- */
     var playing = false, settled = 0, splay = $('splay');
-    function atEnd(){ return free || (si === SL.length - 1 && k === SL[si].stops.length - 1); }
+    function atBottom(){ return window.scrollY >= document.documentElement.scrollHeight - window.innerHeight - 6; }
+    function atEnd(){ return free && atBottom(); }
     function setPlaying(v){
       playing = v; settled = 0;
       splay.classList.toggle('on', v); splay.setAttribute('aria-pressed', v ? 'true' : 'false');
       splay.setAttribute('aria-label', v ? 'Pause (P)' : 'Play (P)');
       if (v){
         if (mode !== 'slides') setMode('slides');
-        if (atEnd()) go(SL[0]);
+        if (atEnd()){ playing = false; splay.classList.remove('on'); splay.setAttribute('aria-pressed', 'false'); splay.setAttribute('aria-label', 'Play (P)'); }
       }
     }
     function dwell(){
       var S = SL[si].stops;
+      if (free) return 3800;                           /* ending: time to read each section */
       if (S.length === 1) return 1500;                 /* title moments */
       return k === S.length - 1 ? 3200 : 2600;          /* time to read each caption */
     }
@@ -2493,7 +2735,7 @@ html.inend .sctl{opacity:0;pointer-events:none}
       if (now - settled < dwell()) return;
       settled = 0;
       if (atEnd()){ setPlaying(false); return; }
-      next();
+      if (free) freeStep(1); else next();
     }, 150);
     function replay(){
       if (mode !== 'slides' || free || busy) return;
